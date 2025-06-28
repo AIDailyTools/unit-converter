@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConvertWizard - Universal Unit Converter</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --accent: #4895ef;
+            --primary: #2c6fbb;
+            --secondary: #1a4e8e;
+            --accent: #42a5f5;
             --light: #f8f9fa;
-            --dark: #2b2d42;
+            --dark: #333;
             --gray: #6c757d;
             --light-gray: #e9ecef;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --border-radius: 12px;
-            --box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             --transition: all 0.3s ease;
         }
 
@@ -26,22 +27,22 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
             background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
             color: var(--dark);
             min-height: 100vh;
-            padding-bottom: 40px;
             line-height: 1.6;
+            padding-bottom: 40px;
         }
 
         header {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 1.2rem 5%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 0.8rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -54,7 +55,6 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
         }
 
         .logo {
@@ -63,14 +63,40 @@
             gap: 12px;
             font-size: 1.8rem;
             font-weight: 700;
+            font-family: 'Poppins', sans-serif;
         }
 
         .logo i {
-            color: var(--success);
+            color: var(--warning);
+        }
+
+        .top-nav {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .top-nav a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .top-nav a:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
         }
 
         .search-container {
             position: relative;
+            margin: 0 20px;
             flex-grow: 1;
             max-width: 500px;
         }
@@ -105,34 +131,10 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        .top-nav {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .top-nav a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 30px;
-            transition: var(--transition);
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .top-nav a:hover {
-            background: rgba(255,255,255,0.15);
-            color: white;
-        }
-
         .main-nav {
             background: white;
-            padding: 1rem 5%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 0.8rem 5%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .nav-links {
@@ -140,7 +142,7 @@
             margin: 0 auto;
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -152,6 +154,7 @@
             padding: 5px 0;
             position: relative;
             transition: var(--transition);
+            font-size: 1.05rem;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -187,10 +190,8 @@
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--secondary);
+            font-family: 'Poppins', sans-serif;
         }
 
         .hero p {
@@ -200,20 +201,63 @@
             margin: 0 auto 2rem;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(44, 111, 187, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(44, 111, 187, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
         .converter-container {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
         }
 
         .converter-header {
-            background: var(--light);
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
             padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
             font-weight: 600;
-            color: var(--dark);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -221,30 +265,40 @@
             gap: 1rem;
         }
 
+        .converter-content {
+            padding: 2rem;
+        }
+        
+        .category-selector {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
         .category-tabs {
             display: flex;
+            background: var(--light-gray);
+            border-radius: 50px;
+            padding: 5px;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            justify-content: center;
         }
-
+        
         .category-tab {
-            padding: 8px 16px;
-            background: rgba(67, 97, 238, 0.1);
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 500;
+            padding: 8px 20px;
+            border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
-            border: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-
+        
         .category-tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .converter-content {
-            padding: 1.5rem;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: var(--primary);
         }
 
         .converter-grid {
@@ -263,22 +317,23 @@
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .input-group label {
             font-weight: 600;
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .input-group input, .input-group select {
-            padding: 14px;
+            padding: 15px;
             border: 1px solid var(--light-gray);
             border-radius: var(--border-radius);
             font-size: 1.1rem;
             transition: var(--transition);
             width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
         .input-group input:focus, .input-group select:focus {
@@ -318,20 +373,34 @@
             justify-content: space-between;
             align-items: center;
             border-left: 4px solid var(--primary);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
         }
 
         .result-value {
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
+            font-family: 'Poppins', sans-serif;
         }
 
         .result-unit {
             font-size: 1.2rem;
             color: var(--gray);
             background: rgba(66, 165, 245, 0.1);
-            padding: 5px 15px;
+            padding: 5px 12px;
             border-radius: 30px;
+        }
+
+        .converter-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .converter-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.95rem;
         }
 
         .categories {
@@ -344,6 +413,7 @@
             color: var(--secondary);
             font-size: 2rem;
             position: relative;
+            font-family: 'Poppins', sans-serif;
         }
 
         .section-title::after {
@@ -372,19 +442,19 @@
             text-align: center;
             transition: var(--transition);
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 1px solid var(--light-gray);
         }
 
         .category-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
             border-color: var(--accent);
         }
 
         .category-card i {
             font-size: 2.5rem;
             color: var(--primary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             background: rgba(66, 165, 245, 0.1);
             width: 80px;
             height: 80px;
@@ -408,7 +478,7 @@
 
         .converters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin: 3rem 0;
         }
@@ -419,6 +489,8 @@
             box-shadow: var(--box-shadow);
             padding: 2rem;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
             border-top: 4px solid var(--accent);
         }
 
@@ -438,6 +510,13 @@
 
         .converter-card h3 i {
             color: var(--accent);
+            background: rgba(66, 165, 245, 0.1);
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
         }
 
         .converter-card ul {
@@ -448,6 +527,8 @@
         .converter-card li {
             padding: 10px 0;
             border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: center;
         }
 
         .converter-card li:last-child {
@@ -458,19 +539,89 @@
             color: var(--dark);
             text-decoration: none;
             transition: var(--transition);
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
         }
 
         .converter-card a:hover {
             color: var(--primary);
-            padding-left: 5px;
+            transform: translateX(5px);
+        }
+
+        .converter-card a i {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .quick-links {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 3rem;
+            margin: 3rem 0;
+            background: linear-gradient(to right, #f9fbfd, #ffffff);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .link-group h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            font-size: 1.3rem;
+        }
+
+        .link-group ul {
+            list-style: none;
+        }
+
+        .link-group li {
+            margin-bottom: 1rem;
+        }
+
+        .link-group a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+
+        .link-group a:hover {
+            color: var(--primary);
+        }
+
+        .link-group a i {
+            color: var(--accent);
+            background: rgba(66, 165, 245, 0.1);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .link-group a:hover i {
+            background: var(--accent);
+            color: white;
         }
 
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 0 0;
-            margin-top: 3rem;
+            padding: 4rem 0 0;
+            margin-top: 4rem;
         }
 
         .footer-content {
@@ -478,7 +629,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             padding: 0 20px;
         }
 
@@ -487,11 +638,12 @@
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
             color: var(--accent);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
         }
 
         .footer-section h3::after {
@@ -499,9 +651,16 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .footer-section p {
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            line-height: 1.7;
         }
 
         .footer-section ul {
@@ -509,7 +668,7 @@
         }
 
         .footer-section li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .footer-section a {
@@ -518,7 +677,7 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
         .footer-section a:hover {
@@ -528,26 +687,62 @@
         .contact-info li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 15px;
+            margin-bottom: 1.2rem;
         }
 
         .contact-info i {
             color: var(--accent);
-            margin-top: 4px;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .creator {
+            font-weight: 600;
+            color: var(--warning);
         }
 
         .copyright {
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.8rem;
             color: #aaa;
-            font-size: 0.95rem;
+            font-size: 1rem;
             border-top: 1px solid #444;
             margin-top: 2rem;
+            line-height: 1.7;
         }
 
-        .creator {
-            font-weight: 500;
+        .copyright a {
             color: var(--accent);
+            text-decoration: none;
+        }
+
+        .copyright a:hover {
+            text-decoration: underline;
         }
 
         /* Responsive Design */
@@ -586,29 +781,39 @@
             }
             
             .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
+                gap: 1.2rem;
+                font-size: 0.95rem;
             }
             
-            .converter-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .quick-links {
+                padding: 2rem;
+            }
+            
+            .category-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .category-tab {
+                padding: 8px 12px;
             }
         }
 
         @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .hero h1 {
                 font-size: 2rem;
             }
             
             .converter-content {
-                padding: 1rem;
+                padding: 1.5rem;
             }
             
-            .category-tabs {
-                width: 100%;
-                overflow-x: auto;
-                padding-bottom: 10px;
+            .converter-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -617,7 +822,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <i class="fas fa-exchange-alt"></i>
+                <i class="fas fa-magic"></i>
                 <span>ConvertWizard</span>
             </div>
             
@@ -638,7 +843,7 @@
         <ul class="nav-links">
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#">All Converters</a></li>
-            <li><a href="#">Common</a></li>
+            <li><a href="#">Common Converters</a></li>
             <li><a href="#">Engineering</a></li>
             <li><a href="#">Heat</a></li>
             <li><a href="#">Fluids</a></li>
@@ -650,22 +855,46 @@
     <div class="container">
         <section class="hero">
             <h1>Universal Unit Converter</h1>
-            <p>Convert between 200+ units across all categories including length, weight, temperature, area, volume, time, and more. Fast, accurate, and completely free!</p>
+            <p>Convert between 200+ units across 20 categories including length, weight, temperature, area, volume, time, and more. Fast, accurate, and completely free!</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="startConverting">
+                    <i class="fas fa-bolt"></i> Start Converting
+                </button>
+                <button class="btn btn-outline" id="popularTools">
+                    <i class="fas fa-star"></i> Popular Tools
+                </button>
+            </div>
         </section>
 
-        <section class="converter-container">
+        <section class="converter-container" id="converterSection">
             <div class="converter-header">
                 <span>Unit Converter Express</span>
-                <div class="category-tabs">
-                    <button class="category-tab active" data-category="length">Length</button>
-                    <button class="category-tab" data-category="temperature">Temperature</button>
-                    <button class="category-tab" data-category="area">Area</button>
-                    <button class="category-tab" data-category="volume">Volume</button>
-                    <button class="category-tab" data-category="weight">Weight</button>
-                    <button class="category-tab" data-category="time">Time</button>
-                </div>
+                <span><i class="fas fa-history"></i> Recent: <span id="recentCategories">Length, Temperature, Weight</span></span>
             </div>
             <div class="converter-content">
+                <div class="category-selector">
+                    <div class="category-tabs">
+                        <div class="category-tab active" data-category="length">
+                            <i class="fas fa-ruler-combined"></i> Length
+                        </div>
+                        <div class="category-tab" data-category="temperature">
+                            <i class="fas fa-thermometer-half"></i> Temperature
+                        </div>
+                        <div class="category-tab" data-category="weight">
+                            <i class="fas fa-weight"></i> Weight
+                        </div>
+                        <div class="category-tab" data-category="area">
+                            <i class="fas fa-border-all"></i> Area
+                        </div>
+                        <div class="category-tab" data-category="volume">
+                            <i class="fas fa-flask"></i> Volume
+                        </div>
+                        <div class="category-tab" data-category="time">
+                            <i class="fas fa-clock"></i> Time
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="converter-grid">
                     <div class="input-group">
                         <label>FROM</label>
@@ -689,16 +918,31 @@
                     <div class="input-group">
                         <label>FROM UNIT</label>
                         <select id="fromUnit">
-                            <!-- Units populated by JavaScript -->
+                            <!-- Options will be populated by JavaScript -->
                         </select>
                     </div>
                     
                     <div class="input-group">
                         <label>TO UNIT</label>
                         <select id="toUnit">
-                            <!-- Units populated by JavaScript -->
+                            <!-- Options will be populated by JavaScript -->
                         </select>
                     </div>
+                </div>
+                
+                <div class="converter-actions">
+                    <button class="btn btn-primary" id="copyBtn">
+                        <i class="fas fa-copy"></i> Copy Result
+                    </button>
+                    <button class="btn btn-outline" id="viewHistory">
+                        <i class="fas fa-history"></i> View History
+                    </button>
+                    <button class="btn btn-outline" id="addFavorite">
+                        <i class="fas fa-star"></i> Add to Favorites
+                    </button>
+                    <button class="btn btn-outline" id="shareBtn">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
                 </div>
             </div>
         </section>
@@ -710,6 +954,11 @@
                     <i class="fas fa-ruler-combined"></i>
                     <h3>Length</h3>
                     <p>Meters, Inches, Feet, Miles, etc.</p>
+                </div>
+                <div class="category-card" data-category="weight">
+                    <i class="fas fa-weight"></i>
+                    <h3>Weight</h3>
+                    <p>Kilograms, Pounds, Ounces, Stones</p>
                 </div>
                 <div class="category-card" data-category="temperature">
                     <i class="fas fa-thermometer-half"></i>
@@ -726,20 +975,15 @@
                     <h3>Volume</h3>
                     <p>Liters, Gallons, Cubic Meters</p>
                 </div>
-                <div class="category-card" data-category="weight">
-                    <i class="fas fa-weight-hanging"></i>
-                    <h3>Weight</h3>
-                    <p>Kilograms, Pounds, Ounces</p>
+                <div class="category-card" data-category="speed">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Speed</h3>
+                    <p>Km/h, Mph, Knots, Mach</p>
                 </div>
                 <div class="category-card" data-category="time">
                     <i class="fas fa-clock"></i>
                     <h3>Time</h3>
                     <p>Seconds, Minutes, Hours, Days</p>
-                </div>
-                <div class="category-card" data-category="speed">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h3>Speed</h3>
-                    <p>Km/h, Mph, Knots, Mach</p>
                 </div>
                 <div class="category-card" data-category="data">
                     <i class="fas fa-memory"></i>
@@ -749,37 +993,73 @@
             </div>
         </section>
 
+        <section class="quick-links">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="links-grid">
+                <div class="link-group">
+                    <h3>Popular Converters</h3>
+                    <ul>
+                        <li><a href="#" class="converter-link" data-category="length"><i class="fas fa-caret-right"></i> Length Converter</a></li>
+                        <li><a href="#" class="converter-link" data-category="weight"><i class="fas fa-caret-right"></i> Weight Converter</a></li>
+                        <li><a href="#" class="converter-link" data-category="temperature"><i class="fas fa-caret-right"></i> Temperature Converter</a></li>
+                        <li><a href="#" class="converter-link" data-category="area"><i class="fas fa-caret-right"></i> Area Converter</a></li>
+                        <li><a href="#" class="converter-link" data-category="volume"><i class="fas fa-caret-right"></i> Volume Converter</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>Engineering Tools</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Torque Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Pressure Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Energy Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Power Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Force Converter</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>Specialized Tools</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Cooking Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Data Storage</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Fuel Consumption</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Angle Converter</a></li>
+                        <li><a href="#"><i class="fas fa-caret-right"></i> Roman Numerals</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
         <h2 class="section-title">All Converters</h2>
         <div class="converters-grid">
             <div class="converter-card">
                 <h3><i class="fas fa-tools"></i> Common Converters</h3>
                 <ul>
-                    <li><a href="#" data-category="length">Length Converter</a></li>
-                    <li><a href="#" data-category="weight">Weight Converter</a></li>
-                    <li><a href="#" data-category="temperature">Temperature Converter</a></li>
-                    <li><a href="#" data-category="area">Area Converter</a></li>
-                    <li><a href="#" data-category="volume">Volume Converter</a></li>
-                    <li><a href="#" data-category="time">Time Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="length"><i class="fas fa-arrow-right"></i> Length Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="weight"><i class="fas fa-arrow-right"></i> Weight Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="temperature"><i class="fas fa-arrow-right"></i> Temperature Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="area"><i class="fas fa-arrow-right"></i> Area Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="volume"><i class="fas fa-arrow-right"></i> Volume Converter</a></li>
+                    <li><a href="#" class="converter-link" data-category="time"><i class="fas fa-arrow-right"></i> Time Converter</a></li>
                 </ul>
             </div>
             <div class="converter-card">
                 <h3><i class="fas fa-cogs"></i> Engineering</h3>
                 <ul>
-                    <li><a href="#">Acceleration Converter</a></li>
-                    <li><a href="#">Density Converter</a></li>
-                    <li><a href="#">Force Converter</a></li>
-                    <li><a href="#">Torque Converter</a></li>
-                    <li><a href="#">Viscosity Converter</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Acceleration Converter</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Density Converter</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Force Converter</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Torque Converter</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Viscosity Converter</a></li>
                 </ul>
             </div>
             <div class="converter-card">
                 <h3><i class="fas fa-fire"></i> Heat Converters</h3>
                 <ul>
-                    <li><a href="#">Heat Flux Density</a></li>
-                    <li><a href="#">Heat Transfer</a></li>
-                    <li><a href="#">Specific Heat Capacity</a></li>
-                    <li><a href="#">Thermal Conductivity</a></li>
-                    <li><a href="#">Thermal Expansion</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Heat Flux Density</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Heat Transfer</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Specific Heat Capacity</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Thermal Conductivity</a></li>
+                    <li><a href="#"><i class="fas fa-arrow-right"></i> Thermal Expansion</a></li>
                 </ul>
             </div>
         </div>
@@ -791,6 +1071,12 @@
                 <h3>About ConvertWizard</h3>
                 <p>ConvertWizard is a free online tool for converting between units of measurement. Our mission is to provide the most accurate and user-friendly unit conversion experience.</p>
                 <p>Created by <span class="creator">Angshuman Das</span>, this tool helps students, engineers, scientists, and everyday users convert units quickly and accurately.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
             </div>
             
             <div class="footer-section">
@@ -827,23 +1113,48 @@
         
         <div class="copyright">
             <p>&copy; 2023 ConvertWizard. All rights reserved. | Created by Angshuman Das</p>
-            <p>Recommended Hosting: GitHub Pages (free), Netlify (free tier), or Vercel (free tier)</p>
+            <p>Recommended Hosting: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> (free), 
+            <a href="https://www.netlify.com/" target="_blank">Netlify</a> (free tier), or 
+            <a href="https://vercel.com/" target="_blank">Vercel</a> (free tier)</p>
         </div>
     </footer>
 
     <script>
+        // DOM Elements
+        const inputValue = document.getElementById('inputValue');
+        const fromUnit = document.getElementById('fromUnit');
+        const toUnit = document.getElementById('toUnit');
+        const resultValue = document.getElementById('resultValue');
+        const resultUnit = document.getElementById('resultUnit');
+        const swapBtn = document.getElementById('swapBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const searchInput = document.getElementById('searchInput');
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const categoryCards = document.querySelectorAll('.category-card');
+        const recentCategories = document.getElementById('recentCategories');
+        const startConvertingBtn = document.getElementById('startConverting');
+        const popularToolsBtn = document.getElementById('popularTools');
+        const viewHistoryBtn = document.getElementById('viewHistory');
+        const addFavoriteBtn = document.getElementById('addFavorite');
+        const shareBtn = document.getElementById('shareBtn');
+        const converterLinks = document.querySelectorAll('.converter-link');
+        
+        // Current category and units
+        let currentCategory = 'length';
+        let recentCategoriesList = ['length', 'temperature', 'weight'];
+        
         // Conversion data for all categories
         const conversionData = {
             length: {
                 units: [
-                    { id: "m", name: "Meter (m)" },
-                    { id: "km", name: "Kilometer (km)" },
-                    { id: "cm", name: "Centimeter (cm)" },
-                    { id: "mm", name: "Millimeter (mm)" },
-                    { id: "in", name: "Inch (in)" },
-                    { id: "ft", name: "Foot (ft)" },
-                    { id: "yd", name: "Yard (yd)" },
-                    { id: "mi", name: "Mile (mi)" }
+                    { id: 'm', name: 'Meter (m)' },
+                    { id: 'km', name: 'Kilometer (km)' },
+                    { id: 'cm', name: 'Centimeter (cm)' },
+                    { id: 'mm', name: 'Millimeter (mm)' },
+                    { id: 'in', name: 'Inch (in)' },
+                    { id: 'ft', name: 'Foot (ft)' },
+                    { id: 'yd', name: 'Yard (yd)' },
+                    { id: 'mi', name: 'Mile (mi)' }
                 ],
                 factors: {
                     m: { m: 1, km: 0.001, cm: 100, mm: 1000, in: 39.3701, ft: 3.28084, yd: 1.09361, mi: 0.000621371 },
@@ -858,122 +1169,101 @@
             },
             temperature: {
                 units: [
-                    { id: "c", name: "Celsius (°C)" },
-                    { id: "f", name: "Fahrenheit (°F)" },
-                    { id: "k", name: "Kelvin (K)" }
+                    { id: 'C', name: 'Celsius (°C)' },
+                    { id: 'F', name: 'Fahrenheit (°F)' },
+                    { id: 'K', name: 'Kelvin (K)' }
                 ],
-                convert: function(value, fromUnit, toUnit) {
+                convert: function(value, from, to) {
                     // Convert to Celsius first
                     let celsius;
-                    if (fromUnit === "c") celsius = value;
-                    else if (fromUnit === "f") celsius = (value - 32) * 5/9;
-                    else if (fromUnit === "k") celsius = value - 273.15;
+                    if (from === 'C') celsius = value;
+                    else if (from === 'F') celsius = (value - 32) * 5/9;
+                    else if (from === 'K') celsius = value - 273.15;
                     
-                    // Convert to target unit
-                    if (toUnit === "c") return celsius;
-                    else if (toUnit === "f") return (celsius * 9/5) + 32;
-                    else if (toUnit === "k") return celsius + 273.15;
-                    
-                    return value;
-                }
-            },
-            area: {
-                units: [
-                    { id: "sqm", name: "Square Meter (m²)" },
-                    { id: "sqkm", name: "Square Kilometer (km²)" },
-                    { id: "hectare", name: "Hectare" },
-                    { id: "acre", name: "Acre" },
-                    { id: "sqft", name: "Square Foot (ft²)" },
-                    { id: "sqin", name: "Square Inch (in²)" }
-                ],
-                factors: {
-                    sqm: { sqm: 1, sqkm: 0.000001, hectare: 0.0001, acre: 0.000247105, sqft: 10.7639, sqin: 1550 },
-                    sqkm: { sqm: 1000000, sqkm: 1, hectare: 100, acre: 247.105, sqft: 10763910.4, sqin: 1.55e9 },
-                    hectare: { sqm: 10000, sqkm: 0.01, hectare: 1, acre: 2.47105, sqft: 107639.104, sqin: 15500031 },
-                    acre: { sqm: 4046.86, sqkm: 0.00404686, hectare: 0.404686, acre: 1, sqft: 43560, sqin: 6272640 },
-                    sqft: { sqm: 0.092903, sqkm: 9.2903e-8, hectare: 9.2903e-6, acre: 2.29568e-5, sqft: 1, sqin: 144 },
-                    sqin: { sqm: 0.00064516, sqkm: 6.4516e-10, hectare: 6.4516e-8, acre: 1.59423e-7, sqft: 0.00694444, sqin: 1 }
-                }
-            },
-            volume: {
-                units: [
-                    { id: "l", name: "Liter (L)" },
-                    { id: "ml", name: "Milliliter (mL)" },
-                    { id: "cum", name: "Cubic Meter (m³)" },
-                    { id: "usgal", name: "US Gallon" },
-                    { id: "ukgal", name: "UK Gallon" }
-                ],
-                factors: {
-                    l: { l: 1, ml: 1000, cum: 0.001, usgal: 0.264172, ukgal: 0.219969 },
-                    ml: { l: 0.001, ml: 1, cum: 0.000001, usgal: 0.000264172, ukgal: 0.000219969 },
-                    cum: { l: 1000, ml: 1000000, cum: 1, usgal: 264.172, ukgal: 219.969 },
-                    usgal: { l: 3.78541, ml: 3785.41, cum: 0.00378541, usgal: 1, ukgal: 0.832674 },
-                    ukgal: { l: 4.54609, ml: 4546.09, cum: 0.00454609, usgal: 1.20095, ukgal: 1 }
+                    // Convert from Celsius to target
+                    if (to === 'C') return celsius;
+                    if (to === 'F') return (celsius * 9/5) + 32;
+                    if (to === 'K') return celsius + 273.15;
                 }
             },
             weight: {
                 units: [
-                    { id: "kg", name: "Kilogram (kg)" },
-                    { id: "g", name: "Gram (g)" },
-                    { id: "mg", name: "Milligram (mg)" },
-                    { id: "lb", name: "Pound (lb)" },
-                    { id: "oz", name: "Ounce (oz)" },
-                    { id: "st", name: "Stone (st)" }
+                    { id: 'kg', name: 'Kilogram (kg)' },
+                    { id: 'g', name: 'Gram (g)' },
+                    { id: 'mg', name: 'Milligram (mg)' },
+                    { id: 'lb', name: 'Pound (lb)' },
+                    { id: 'oz', name: 'Ounce (oz)' }
                 ],
                 factors: {
-                    kg: { kg: 1, g: 1000, mg: 1e6, lb: 2.20462, oz: 35.274, st: 0.157473 },
-                    g: { kg: 0.001, g: 1, mg: 1000, lb: 0.00220462, oz: 0.035274, st: 0.000157473 },
-                    mg: { kg: 0.000001, g: 0.001, mg: 1, lb: 0.00000220462, oz: 0.000035274, st: 1.57473e-7 },
-                    lb: { kg: 0.453592, g: 453.592, mg: 453592, lb: 1, oz: 16, st: 0.0714286 },
-                    oz: { kg: 0.0283495, g: 28.3495, mg: 28349.5, lb: 0.0625, oz: 1, st: 0.00446429 },
-                    st: { kg: 6.35029, g: 6350.29, mg: 6.35e6, lb: 14, oz: 224, st: 1 }
+                    kg: { kg: 1, g: 1000, mg: 1e6, lb: 2.20462, oz: 35.274 },
+                    g: { kg: 0.001, g: 1, mg: 1000, lb: 0.00220462, oz: 0.035274 },
+                    mg: { kg: 1e-6, g: 0.001, mg: 1, lb: 2.20462e-6, oz: 3.5274e-5 },
+                    lb: { kg: 0.453592, g: 453.592, mg: 453592, lb: 1, oz: 16 },
+                    oz: { kg: 0.0283495, g: 28.3495, mg: 28349.5, lb: 0.0625, oz: 1 }
+                }
+            },
+            area: {
+                units: [
+                    { id: 'm2', name: 'Square Meter (m²)' },
+                    { id: 'km2', name: 'Square Kilometer (km²)' },
+                    { id: 'cm2', name: 'Square Centimeter (cm²)' },
+                    { id: 'ha', name: 'Hectare (ha)' },
+                    { id: 'acre', name: 'Acre' },
+                    { id: 'ft2', name: 'Square Foot (ft²)' }
+                ],
+                factors: {
+                    m2: { m2: 1, km2: 1e-6, cm2: 10000, ha: 0.0001, acre: 0.000247105, ft2: 10.7639 },
+                    km2: { m2: 1e6, km2: 1, cm2: 1e10, ha: 100, acre: 247.105, ft2: 1.076e7 },
+                    cm2: { m2: 0.0001, km2: 1e-10, cm2: 1, ha: 1e-8, acre: 2.47105e-8, ft2: 0.00107639 },
+                    ha: { m2: 10000, km2: 0.01, cm2: 1e8, ha: 1, acre: 2.47105, ft2: 107639 },
+                    acre: { m2: 4046.86, km2: 0.00404686, cm2: 4.04686e7, ha: 0.404686, acre: 1, ft2: 43560 },
+                    ft2: { m2: 0.092903, km2: 9.2903e-8, cm2: 929.03, ha: 9.2903e-6, acre: 2.29568e-5, ft2: 1 }
+                }
+            },
+            volume: {
+                units: [
+                    { id: 'm3', name: 'Cubic Meter (m³)' },
+                    { id: 'L', name: 'Liter (L)' },
+                    { id: 'mL', name: 'Milliliter (mL)' },
+                    { id: 'gal', name: 'US Gallon (gal)' },
+                    { id: 'qt', name: 'US Quart (qt)' },
+                    { id: 'pt', name: 'US Pint (pt)' }
+                ],
+                factors: {
+                    m3: { m3: 1, L: 1000, mL: 1e6, gal: 264.172, qt: 1056.69, pt: 2113.38 },
+                    L: { m3: 0.001, L: 1, mL: 1000, gal: 0.264172, qt: 1.05669, pt: 2.11338 },
+                    mL: { m3: 1e-6, L: 0.001, mL: 1, gal: 0.000264172, qt: 0.00105669, pt: 0.00211338 },
+                    gal: { m3: 0.00378541, L: 3.78541, mL: 3785.41, gal: 1, qt: 4, pt: 8 },
+                    qt: { m3: 0.000946353, L: 0.946353, mL: 946.353, gal: 0.25, qt: 1, pt: 2 },
+                    pt: { m3: 0.000473176, L: 0.473176, mL: 473.176, gal: 0.125, qt: 0.5, pt: 1 }
                 }
             },
             time: {
                 units: [
-                    { id: "ms", name: "Millisecond (ms)" },
-                    { id: "s", name: "Second (s)" },
-                    { id: "min", name: "Minute (min)" },
-                    { id: "h", name: "Hour (h)" },
-                    { id: "d", name: "Day (d)" },
-                    { id: "wk", name: "Week (wk)" }
+                    { id: 's', name: 'Second (s)' },
+                    { id: 'min', name: 'Minute (min)' },
+                    { id: 'hr', name: 'Hour (hr)' },
+                    { id: 'day', name: 'Day (day)' },
+                    { id: 'week', name: 'Week (week)' },
+                    { id: 'month', name: 'Month (month)' },
+                    { id: 'year', name: 'Year (year)' }
                 ],
                 factors: {
-                    ms: { ms: 1, s: 0.001, min: 0.0000166667, h: 2.77778e-7, d: 1.15741e-8, wk: 1.65344e-9 },
-                    s: { ms: 1000, s: 1, min: 0.0166667, h: 0.000277778, d: 0.0000115741, wk: 0.00000165344 },
-                    min: { ms: 60000, s: 60, min: 1, h: 0.0166667, d: 0.000694444, wk: 0.0000992063 },
-                    h: { ms: 3.6e6, s: 3600, min: 60, h: 1, d: 0.0416667, wk: 0.00595238 },
-                    d: { ms: 8.64e7, s: 86400, min: 1440, h: 24, d: 1, wk: 0.142857 },
-                    wk: { ms: 6.048e8, s: 604800, min: 10080, h: 168, d: 7, wk: 1 }
+                    s: { s: 1, min: 1/60, hr: 1/3600, day: 1/86400, week: 1/604800, month: 1/2.6298e6, year: 1/3.15576e7 },
+                    min: { s: 60, min: 1, hr: 1/60, day: 1/1440, week: 1/10080, month: 1/43800, year: 1/525600 },
+                    hr: { s: 3600, min: 60, hr: 1, day: 1/24, week: 1/168, month: 1/730, year: 1/8760 },
+                    day: { s: 86400, min: 1440, hr: 24, day: 1, week: 1/7, month: 1/30.4167, year: 1/365 },
+                    week: { s: 604800, min: 10080, hr: 168, day: 7, week: 1, month: 1/4.34524, year: 1/52.1429 },
+                    month: { s: 2.6298e6, min: 43830, hr: 730.5, day: 30.4167, week: 4.34524, month: 1, year: 1/12 },
+                    year: { s: 3.15576e7, min: 525960, hr: 8766, day: 365, week: 52.1429, month: 12, year: 1 }
                 }
             }
         };
-
-        // DOM Elements
-        const inputValue = document.getElementById('inputValue');
-        const fromUnit = document.getElementById('fromUnit');
-        const toUnit = document.getElementById('toUnit');
-        const resultValue = document.getElementById('resultValue');
-        const resultUnit = document.getElementById('resultUnit');
-        const swapBtn = document.getElementById('swapBtn');
-        const searchInput = document.getElementById('searchInput');
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const categoryCards = document.querySelectorAll('.category-card');
-        const converterLinks = document.querySelectorAll('.converter-card a');
         
-        // Current category state
-        let currentCategory = 'length';
-
-        // Initialize the converter
-        function initConverter() {
-            updateUnitDropdowns();
-            convertUnits();
-            addEventListeners();
-        }
-
-        // Update the unit dropdowns based on current category
-        function updateUnitDropdowns() {
-            const units = conversionData[currentCategory].units;
+        // Function to populate unit dropdowns
+        function populateUnitDropdowns() {
+            const categoryData = conversionData[currentCategory];
+            const units = categoryData.units;
             
             // Clear existing options
             fromUnit.innerHTML = '';
@@ -984,57 +1274,62 @@
                 const fromOption = document.createElement('option');
                 fromOption.value = unit.id;
                 fromOption.textContent = unit.name;
+                fromUnit.appendChild(fromOption);
                 
                 const toOption = document.createElement('option');
                 toOption.value = unit.id;
                 toOption.textContent = unit.name;
-                
-                // Set default selections
-                if (unit.id === 'in' && currentCategory === 'length') {
-                    fromOption.selected = true;
-                }
-                if (unit.id === 'cm' && currentCategory === 'length') {
-                    toOption.selected = true;
-                }
-                if (unit.id === 'c' && currentCategory === 'temperature') {
-                    fromOption.selected = true;
-                }
-                if (unit.id === 'f' && currentCategory === 'temperature') {
-                    toOption.selected = true;
-                }
-                
-                fromUnit.appendChild(fromOption);
                 toUnit.appendChild(toOption);
             });
+            
+            // Set default selections
+            if (units.length >= 2) {
+                fromUnit.value = units[0].id;
+                toUnit.value = units[1].id;
+            }
+            
+            // Update conversion
+            convertUnits();
         }
-
+        
         // Function to perform conversion
         function convertUnits() {
             const value = parseFloat(inputValue.value) || 0;
             const from = fromUnit.value;
             const to = toUnit.value;
-            const category = conversionData[currentCategory];
+            const categoryData = conversionData[currentCategory];
             
             let result;
             
             if (currentCategory === 'temperature') {
-                result = category.convert(value, from, to);
+                result = categoryData.convert(value, from, to);
             } else {
-                const factor = category.factors[from][to];
+                const factor = categoryData.factors[from][to];
                 result = value * factor;
             }
             
+            // Format result
+            result = parseFloat(result.toFixed(6));
+            
             // Display result
-            resultValue.textContent = result.toLocaleString(undefined, { 
-                maximumFractionDigits: 6,
-                minimumFractionDigits: result % 1 !== 0 ? 2 : 0
+            resultValue.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
+            resultUnit.textContent = toUnit.options[toUnit.selectedIndex].text;
+        }
+        
+        // Function to update recent categories
+        function updateRecentCategories() {
+            if (!recentCategoriesList.includes(currentCategory)) {
+                recentCategoriesList.pop();
+                recentCategoriesList.unshift(currentCategory);
+            }
+            
+            const formattedCategories = recentCategoriesList.map(cat => {
+                return cat.charAt(0).toUpperCase() + cat.slice(1);
             });
             
-            // Update result unit text
-            const toUnitText = conversionData[currentCategory].units.find(u => u.id === to).name;
-            resultUnit.textContent = toUnitText;
+            recentCategories.textContent = formattedCategories.join(', ');
         }
-
+        
         // Swap units function
         function swapUnits() {
             const temp = fromUnit.value;
@@ -1042,8 +1337,8 @@
             toUnit.value = temp;
             convertUnits();
         }
-
-        // Change category
+        
+        // Change category function
         function changeCategory(category) {
             currentCategory = category;
             
@@ -1056,79 +1351,127 @@
                 }
             });
             
-            // Reset input value to 1
-            inputValue.value = 1;
+            // Populate unit dropdowns
+            populateUnitDropdowns();
             
-            // Update dropdowns and convert
-            updateUnitDropdowns();
-            convertUnits();
+            // Update recent categories
+            updateRecentCategories();
+            
+            // Scroll to converter if needed
+            document.getElementById('converterSection').scrollIntoView({ behavior: 'smooth' });
         }
-
+        
+        // Copy result to clipboard
+        function copyResult() {
+            const resultText = `${resultValue.textContent} ${resultUnit.textContent}`;
+            navigator.clipboard.writeText(resultText).then(() => {
+                // Show feedback
+                const originalText = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                }, 2000);
+            });
+        }
+        
         // Search functionality
         function searchConverters() {
             const searchTerm = searchInput.value.toLowerCase();
             const converterCards = document.querySelectorAll('.converter-card');
             const categoryCards = document.querySelectorAll('.category-card');
-            
-            if (!searchTerm) {
-                converterCards.forEach(card => card.style.display = 'block');
-                categoryCards.forEach(card => card.style.display = 'block');
-                return;
-            }
+            let found = false;
             
             converterCards.forEach(card => {
                 const cardText = card.textContent.toLowerCase();
-                card.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
             });
             
             categoryCards.forEach(card => {
                 const cardText = card.textContent.toLowerCase();
-                card.style.display = cardText.includes(searchTerm) ? 'block' : 'none';
+                if (cardText.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
             });
+            
+            // Scroll to converters section if search term exists
+            if (searchTerm && found) {
+                document.querySelector('.converters-grid').scrollIntoView({ behavior: 'smooth' });
+            }
         }
-
-        // Add event listeners
-        function addEventListeners() {
+        
+        // Initialize converter
+        function initConverter() {
+            populateUnitDropdowns();
+            updateRecentCategories();
+            
+            // Set up event listeners
             inputValue.addEventListener('input', convertUnits);
             fromUnit.addEventListener('change', convertUnits);
             toUnit.addEventListener('change', convertUnits);
             swapBtn.addEventListener('click', swapUnits);
+            copyBtn.addEventListener('click', copyResult);
             searchInput.addEventListener('input', searchConverters);
             
-            // Category tabs
+            // Category tab event listeners
             categoryTabs.forEach(tab => {
                 tab.addEventListener('click', () => {
                     changeCategory(tab.dataset.category);
                 });
             });
             
-            // Category cards
+            // Category card event listeners
             categoryCards.forEach(card => {
                 card.addEventListener('click', () => {
-                    changeCategory(card.dataset.category);
-                    // Scroll to converter
-                    document.querySelector('.converter-container').scrollIntoView({ 
-                        behavior: 'smooth' 
-                    });
+                    if (card.dataset.category) {
+                        changeCategory(card.dataset.category);
+                    }
                 });
+            });
+            
+            // Hero button listeners
+            startConvertingBtn.addEventListener('click', () => {
+                document.getElementById('converterSection').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            popularToolsBtn.addEventListener('click', () => {
+                changeCategory('length');
+            });
+            
+            // Converter action buttons
+            viewHistoryBtn.addEventListener('click', () => {
+                alert('Conversion history feature will be implemented soon!');
+            });
+            
+            addFavoriteBtn.addEventListener('click', () => {
+                alert(`Added ${currentCategory} converter to favorites!`);
+            });
+            
+            shareBtn.addEventListener('click', () => {
+                alert('Share functionality will be implemented soon!');
             });
             
             // Converter links
             converterLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (link.dataset.category) {
-                        changeCategory(link.dataset.category);
-                        document.querySelector('.converter-container').scrollIntoView({ 
-                            behavior: 'smooth' 
-                        });
+                    const category = link.dataset.category;
+                    if (category) {
+                        changeCategory(category);
                     }
                 });
             });
         }
-
-        // Initialize the converter when page loads
-        window.addEventListener('DOMContentLoaded', initConverter);
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initConverter);
     </script>
 </body>
 </html>
