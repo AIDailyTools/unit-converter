@@ -987,6 +987,110 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- Area Converter -->
+                <div id="area-converter" class="converter-section">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM</label>
+                            <input type="number" id="areaInput" value="1" min="0">
+                        </div>
+                        
+                        <button class="swap-btn" id="areaSwapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>TO</label>
+                            <div class="result-container">
+                                <span class="result-value" id="areaResult">6.4516</span>
+                                <span class="result-unit" id="areaResultUnit">cm²</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM UNIT</label>
+                            <select id="fromAreaUnit">
+                                <option value="m2">Square Meter (m²)</option>
+                                <option value="km2">Square Kilometer (km²)</option>
+                                <option value="cm2">Square Centimeter (cm²)</option>
+                                <option value="mm2">Square Millimeter (mm²)</option>
+                                <option value="in2" selected>Square Inch (in²)</option>
+                                <option value="ft2">Square Foot (ft²)</option>
+                                <option value="yd2">Square Yard (yd²)</option>
+                                <option value="ac">Acre (ac)</option>
+                                <option value="ha">Hectare (ha)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO UNIT</label>
+                            <select id="toAreaUnit">
+                                <option value="m2">Square Meter (m²)</option>
+                                <option value="km2">Square Kilometer (km²)</option>
+                                <option value="cm2" selected>Square Centimeter (cm²)</option>
+                                <option value="mm2">Square Millimeter (mm²)</option>
+                                <option value="in2">Square Inch (in²)</option>
+                                <option value="ft2">Square Foot (ft²)</option>
+                                <option value="yd2">Square Yard (yd²)</option>
+                                <option value="ac">Acre (ac)</option>
+                                <option value="ha">Hectare (ha)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Volume Converter -->
+                <div id="volume-converter" class="converter-section">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM</label>
+                            <input type="number" id="volumeInput" value="1" min="0">
+                        </div>
+                        
+                        <button class="swap-btn" id="volumeSwapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>TO</label>
+                            <div class="result-container">
+                                <span class="result-value" id="volumeResult">3.785</span>
+                                <span class="result-unit" id="volumeResultUnit">L</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM UNIT</label>
+                            <select id="fromVolumeUnit">
+                                <option value="m3">Cubic Meter (m³)</option>
+                                <option value="L">Liter (L)</option>
+                                <option value="mL">Milliliter (mL)</option>
+                                <option value="in3">Cubic Inch (in³)</option>
+                                <option value="ft3">Cubic Foot (ft³)</option>
+                                <option value="gal" selected>US Gallon (gal)</option>
+                                <option value="impgal">Imperial Gallon (imp gal)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO UNIT</label>
+                            <select id="toVolumeUnit">
+                                <option value="m3">Cubic Meter (m³)</option>
+                                <option value="L" selected>Liter (L)</option>
+                                <option value="mL">Milliliter (mL)</option>
+                                <option value="in3">Cubic Inch (in³)</option>
+                                <option value="ft3">Cubic Foot (ft³)</option>
+                                <option value="gal">US Gallon (gal)</option>
+                                <option value="impgal">Imperial Gallon (imp gal)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1220,6 +1324,22 @@
         const weightResultUnit = document.getElementById('weightResultUnit');
         const weightSwapBtn = document.getElementById('weightSwapBtn');
         
+        // Area elements
+        const areaInput = document.getElementById('areaInput');
+        const fromAreaUnit = document.getElementById('fromAreaUnit');
+        const toAreaUnit = document.getElementById('toAreaUnit');
+        const areaResult = document.getElementById('areaResult');
+        const areaResultUnit = document.getElementById('areaResultUnit');
+        const areaSwapBtn = document.getElementById('areaSwapBtn');
+        
+        // Volume elements
+        const volumeInput = document.getElementById('volumeInput');
+        const fromVolumeUnit = document.getElementById('fromVolumeUnit');
+        const toVolumeUnit = document.getElementById('toVolumeUnit');
+        const volumeResult = document.getElementById('volumeResult');
+        const volumeResultUnit = document.getElementById('volumeResultUnit');
+        const volumeSwapBtn = document.getElementById('volumeSwapBtn');
+        
         // Tabs
         const converterTabs = document.querySelectorAll('.converter-tab');
         const converterSections = document.querySelectorAll('.converter-section');
@@ -1249,7 +1369,27 @@
             GBP: { USD:1.26, EUR:1.18, GBP:1, JPY:187.5, CAD:1.72, AUD:1.95 },
             JPY: { USD:0.0067, EUR:0.0063, GBP:0.0053, JPY:1, CAD:0.0092, AUD:0.0104 },
             CAD: { USD:0.73, EUR:0.68, GBP:0.58, JPY:108.7, CAD:1, AUD:1.13 },
-            AUD: { USD:0.65, EUR:0.61, GBP:0.51, JPY:96.2, CAD:0.88, AUD:1 }
+            AUD: { USD:0.65, EUR:0.61, GBP:0.51, JPY:96.2, CAD:0.88, AUD:1 },
+            
+            // Area conversions (based on square meters)
+            m2: { m2:1, km2:0.000001, cm2:10000, mm2:1000000, in2:1550, ft2:10.7639, yd2:1.19599, ac:0.000247105, ha:0.0001 },
+            km2: { m2:1000000, km2:1, cm2:1e10, mm2:1e12, in2:1.55e9, ft2:1.076e7, yd2:1.196e6, ac:247.105, ha:100 },
+            cm2: { m2:0.0001, km2:1e-10, cm2:1, mm2:100, in2:0.155, ft2:0.00107639, yd2:0.000119599, ac:2.47105e-8, ha:1e-8 },
+            mm2: { m2:0.000001, km2:1e-12, cm2:0.01, mm2:1, in2:0.00155, ft2:0.0000107639, yd2:0.00000119599, ac:2.47105e-10, ha:1e-10 },
+            in2: { m2:0.00064516, km2:6.4516e-10, cm2:6.4516, mm2:645.16, in2:1, ft2:0.00694444, yd2:0.000771605, ac:1.59423e-7, ha:6.4516e-8 },
+            ft2: { m2:0.092903, km2:9.2903e-8, cm2:929.03, mm2:92903, in2:144, ft2:1, yd2:0.111111, ac:2.29568e-5, ha:9.2903e-6 },
+            yd2: { m2:0.836127, km2:8.36127e-7, cm2:8361.27, mm2:836127, in2:1296, ft2:9, yd2:1, ac:0.000206612, ha:8.36127e-5 },
+            ac: { m2:4046.86, km2:0.00404686, cm2:40468600, mm2:4.04686e9, in2:6.273e6, ft2:43560, yd2:4840, ac:1, ha:0.404686 },
+            ha: { m2:10000, km2:0.01, cm2:1e8, mm2:1e10, in2:1.55e7, ft2:107639, yd2:11959.9, ac:2.47105, ha:1 },
+            
+            // Volume conversions (based on cubic meters)
+            m3: { m3:1, L:1000, mL:1000000, in3:61023.7, ft3:35.3147, gal:264.172, impgal:219.969 },
+            L: { m3:0.001, L:1, mL:1000, in3:61.0237, ft3:0.0353147, gal:0.264172, impgal:0.219969 },
+            mL: { m3:0.000001, L:0.001, mL:1, in3:0.0610237, ft3:0.0000353147, gal:0.000264172, impgal:0.000219969 },
+            in3: { m3:0.0000163871, L:0.0163871, mL:16.3871, in3:1, ft3:0.000578704, gal:0.004329, impgal:0.00360465 },
+            ft3: { m3:0.0283168, L:28.3168, mL:28316.8, in3:1728, ft3:1, gal:7.48052, impgal:6.22884 },
+            gal: { m3:0.00378541, L:3.78541, mL:3785.41, in3:231, ft3:0.133681, gal:1, impgal:0.832674 },
+            impgal: { m3:0.00454609, L:4.54609, mL:4546.09, in3:277.419, ft3:0.160544, gal:1.20095, impgal:1 }
         };
         
         // Function to perform conversion
@@ -1327,6 +1467,40 @@
             weightResultUnit.textContent = toWeightUnit.options[toWeightUnit.selectedIndex].text;
         }
         
+        // Function to convert area
+        function convertArea() {
+            const value = parseFloat(areaInput.value) || 0;
+            const from = fromAreaUnit.value;
+            const to = toAreaUnit.value;
+            
+            // Get the conversion factor
+            const factor = conversionFactors[from][to];
+            
+            // Calculate result
+            const result = value * factor;
+            
+            // Display result
+            areaResult.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
+            areaResultUnit.textContent = toAreaUnit.options[toAreaUnit.selectedIndex].text;
+        }
+        
+        // Function to convert volume
+        function convertVolume() {
+            const value = parseFloat(volumeInput.value) || 0;
+            const from = fromVolumeUnit.value;
+            const to = toVolumeUnit.value;
+            
+            // Get the conversion factor
+            const factor = conversionFactors[from][to];
+            
+            // Calculate result
+            const result = value * factor;
+            
+            // Display result
+            volumeResult.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
+            volumeResultUnit.textContent = toVolumeUnit.options[toVolumeUnit.selectedIndex].text;
+        }
+        
         // Swap units function for length
         function swapUnits() {
             const temp = fromUnit.value;
@@ -1359,6 +1533,22 @@
             convertWeight();
         }
         
+        // Swap area units function
+        function swapAreaUnits() {
+            const temp = fromAreaUnit.value;
+            fromAreaUnit.value = toAreaUnit.value;
+            toAreaUnit.value = temp;
+            convertArea();
+        }
+        
+        // Swap volume units function
+        function swapVolumeUnits() {
+            const temp = fromVolumeUnit.value;
+            fromVolumeUnit.value = toVolumeUnit.value;
+            toVolumeUnit.value = temp;
+            convertVolume();
+        }
+        
         // Switch converter tabs
         function switchConverterTab(tab) {
             // Remove active class from all tabs
@@ -1377,8 +1567,9 @@
             let recent = recentText.textContent.replace('Recent: ', '').split(', ');
             
             // Add to beginning if not already there
-            if (!recent.includes(tab.textContent)) {
-                recent.unshift(tab.textContent);
+            const tabText = tab.textContent;
+            if (!recent.includes(tabText)) {
+                recent.unshift(tabText);
                 if (recent.length > 3) recent.pop();
                 recentText.innerHTML = `<i class="fas fa-history"></i> Recent: ${recent.join(', ')}`;
             }
@@ -1388,21 +1579,52 @@
         function searchConverters() {
             const searchTerm = searchInput.value.toLowerCase();
             const converterCards = document.querySelectorAll('.converter-card');
+            const categoryCards = document.querySelectorAll('.category-card');
+            const linkGroups = document.querySelectorAll('.link-group li a');
             let found = false;
             
+            // Hide all converter cards initially
+            converterCards.forEach(card => card.style.display = 'none');
+            
+            // Show converter cards that match search term
             converterCards.forEach(card => {
                 const cardText = card.textContent.toLowerCase();
                 if (cardText.includes(searchTerm)) {
                     card.style.display = 'block';
                     found = true;
+                }
+            });
+            
+            // Highlight matching category cards
+            categoryCards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchTerm)) {
+                    card.style.border = '2px solid var(--accent)';
                 } else {
-                    card.style.display = 'none';
+                    card.style.border = 'none';
+                }
+            });
+            
+            // Highlight matching links
+            linkGroups.forEach(link => {
+                const linkText = link.textContent.toLowerCase();
+                if (linkText.includes(searchTerm)) {
+                    link.style.color = 'var(--accent)';
+                    link.style.fontWeight = 'bold';
+                } else {
+                    link.style.color = '';
+                    link.style.fontWeight = '';
                 }
             });
             
             // Scroll to converters section if search term exists
             if (searchTerm && found) {
                 document.querySelector('.converters-grid').scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // If search is cleared, show all converters
+            if (!searchTerm) {
+                filterByCategory('all');
             }
         }
         
@@ -1450,6 +1672,16 @@
         fromWeightUnit.addEventListener('change', convertWeight);
         toWeightUnit.addEventListener('change', convertWeight);
         weightSwapBtn.addEventListener('click', swapWeightUnits);
+        
+        areaInput.addEventListener('input', convertArea);
+        fromAreaUnit.addEventListener('change', convertArea);
+        toAreaUnit.addEventListener('change', convertArea);
+        areaSwapBtn.addEventListener('click', swapAreaUnits);
+        
+        volumeInput.addEventListener('input', convertVolume);
+        fromVolumeUnit.addEventListener('change', convertVolume);
+        toVolumeUnit.addEventListener('change', convertVolume);
+        volumeSwapBtn.addEventListener('click', swapVolumeUnits);
         
         converterTabs.forEach(tab => {
             tab.addEventListener('click', () => switchConverterTab(tab));
@@ -1513,6 +1745,8 @@
         convertCurrency();
         convertTemperature();
         convertWeight();
+        convertArea();
+        convertVolume();
         
         // Initialize category filtering
         filterByCategory('all');
