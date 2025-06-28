@@ -528,6 +528,19 @@
             color: var(--accent);
         }
 
+        .quote-3d {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #fff; /* White text for contrast */
+            text-shadow: 
+                1px 1px 0px #0a2d59,   /* Primary shadow color (darker primary blue) */
+                2px 2px 0px #11427d,   /* Secondary shadow color */
+                3px 3px 0px #1a56a0;   /* Tertiary shadow color */
+            margin-top: 10px;
+            margin-bottom: 5px;
+            display: block; /* Ensures it takes its own line */
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .header-content {
@@ -659,6 +672,50 @@
                             <option value="yd">Yard (yd)</option>
                             <option value="mi">Mile (mi)</option>
                             <option value="ly">Light Year (ly)</option>
+                            <optgroup label="Electricity - Charge">
+                                <option value="C">Coulomb (C)</option>
+                                <option value="uC">Microcoulomb (μC)</option>
+                                <option value="nC">Nanocoulomb (nC)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Current">
+                                <option value="A">Ampere (A)</option>
+                                <option value="mA">Milliampere (mA)</option>
+                                <option value="uA">Microampere (μA)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Voltage">
+                                <option value="V">Volt (V)</option>
+                                <option value="kV">Kilovolt (kV)</option>
+                                <option value="mV">Millivolt (mV)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Resistance">
+                                <option value="Ohm">Ohm (Ω)</option>
+                                <option value="kOhm">Kiloohm (kΩ)</option>
+                                <option value="MOhm">Megaohm (MΩ)</option>
+                            </optgroup>
+                            <optgroup label="Light - Luminous Flux">
+                                <option value="lm">Lumen (lm)</option>
+                                <option value="cd_sr">Candela-steradian (cd·sr)</option>
+                            </optgroup>
+                            <optgroup label="Light - Illuminance">
+                                <option value="lx">Lux (lx)</option>
+                                <option value="fc">Foot-candle (fc)</option>
+                            </optgroup>
+                            <optgroup label="Light - Luminance">
+                                <option value="cd_m2">Candela per Sq Meter (cd/m²)</option>
+                                <option value="nit">Nit (nit)</option>
+                            </optgroup>
+                            <optgroup label="Heat - Energy">
+                                <option value="J">Joule (J)</option>
+                                <option value="kJ">Kilojoule (kJ)</option>
+                                <option value="cal">Calorie (cal)</option>
+                                <option value="BTU">British Thermal Unit (BTU)</option>
+                            </optgroup>
+                            <optgroup label="Fluids - Volume Flow Rate">
+                                <option value="m3_s">Cubic Meter/Sec (m³/s)</option>
+                                <option value="L_s">Liter/Sec (L/s)</option>
+                                <option value="gal_min">Gallon/Min (gal/min)</option>
+                                <option value="ft3_s">Cubic Foot/Sec (ft³/s)</option>
+                            </optgroup>
                         </select>
                     </div>
                     
@@ -676,6 +733,50 @@
                             <option value="yd">Yard (yd)</option>
                             <option value="mi">Mile (mi)</option>
                             <option value="ly">Light Year (ly)</option>
+                            <optgroup label="Electricity - Charge">
+                                <option value="C">Coulomb (C)</option>
+                                <option value="uC">Microcoulomb (μC)</option>
+                                <option value="nC">Nanocoulomb (nC)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Current">
+                                <option value="A">Ampere (A)</option>
+                                <option value="mA">Milliampere (mA)</option>
+                                <option value="uA">Microampere (μA)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Voltage">
+                                <option value="V">Volt (V)</option>
+                                <option value="kV">Kilovolt (kV)</option>
+                                <option value="mV">Millivolt (mV)</option>
+                            </optgroup>
+                            <optgroup label="Electricity - Resistance">
+                                <option value="Ohm">Ohm (Ω)</option>
+                                <option value="kOhm">Kiloohm (kΩ)</option>
+                                <option value="MOhm">Megaohm (MΩ)</option>
+                            </optgroup>
+                            <optgroup label="Light - Luminous Flux">
+                                <option value="lm">Lumen (lm)</option>
+                                <option value="cd_sr">Candela-steradian (cd·sr)</option>
+                            </optgroup>
+                            <optgroup label="Light - Illuminance">
+                                <option value="lx">Lux (lx)</option>
+                                <option value="fc">Foot-candle (fc)</option>
+                            </optgroup>
+                            <optgroup label="Light - Luminance">
+                                <option value="cd_m2">Candela per Sq Meter (cd/m²)</option>
+                                <option value="nit">Nit (nit)</option>
+                            </optgroup>
+                            <optgroup label="Heat - Energy">
+                                <option value="J">Joule (J)</option>
+                                <option value="kJ">Kilojoule (kJ)</option>
+                                <option value="cal">Calorie (cal)</option>
+                                <option value="BTU">British Thermal Unit (BTU)</option>
+                            </optgroup>
+                            <optgroup label="Fluids - Volume Flow Rate">
+                                <option value="m3_s">Cubic Meter/Sec (m³/s)</option>
+                                <option value="L_s">Liter/Sec (L/s)</option>
+                                <option value="gal_min">Gallon/Min (gal/min)</option>
+                                <option value="ft3_s">Cubic Foot/Sec (ft³/s)</option>
+                            </optgroup>
                         </select>
                     </div>
                 </div>
@@ -726,31 +827,31 @@
                 <div class="link-group">
                     <h3>Popular Converters</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Length Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Weight Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Temperature Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Area Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Currency Converter</a></li>
+                        <li><a href="#">Length Converter</a></li>
+                        <li><a href="#">Weight Converter</a></li>
+                        <li><a href="#">Temperature Converter</a></li>
+                        <li><a href="#">Area Converter</a></li>
+                        <li><a href="#">Currency Converter</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Engineering Tools</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Torque Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Pressure Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Energy Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Power Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Force Converter</a></li>
+                        <li><a href="#">Torque Converter</a></li>
+                        <li><a href="#">Pressure Converter</a></li>
+                        <li><a href="#">Energy Converter</a></li>
+                        <li><a href="#">Power Converter</a></li>
+                        <li><a href="#">Force Converter</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Specialized</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Cooking Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Data Storage</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Fuel Consumption</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Angle Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Roman Numerals</a></li>
+                        <li><a href="#">Cooking Converter</a></li>
+                        <li><a href="#">Data Storage</a></li>
+                        <li><a href="#">Fuel Consumption</a></li>
+                        <li><a href="#">Angle Converter</a></li>
+                        <li><a href="#">Roman Numerals</a></li>
                     </ul>
                 </div>
             </div>
@@ -859,9 +960,9 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-envelope"></i> contact@unitconverters.net</li>
-                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Conversion Street, Unit City</li>
+                    <li><i class="fas fa-envelope"></i> angshuman.ds2020@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9038394841</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Ichapur, West Bengal, India.</li>
                 </ul>
                 <div style="margin-top: 20px;">
                     <h3>Follow Us</h3>
@@ -876,8 +977,8 @@
         </div>
         
         <div class="copyright">
+            <p class="quote-3d">Made with love for students, professionals.</p>
             <p>&copy; 2023 UnitConverters.net. All rights reserved. | Created by Angshuman Das</p>
-            <p>Recommended Hosting: GitHub Pages (free), Netlify (free tier), or Vercel (free tier)</p>
         </div>
     </footer>
 
@@ -890,7 +991,7 @@
         const resultUnit = document.getElementById('resultUnit');
         const swapBtn = document.getElementById('swapBtn');
         const searchInput = document.getElementById('searchInput');
-        
+
         // Conversion formulas
         const conversionFactors = {
             // Length conversions
@@ -904,24 +1005,66 @@
             ft: { m: 0.3048, km: 0.0003048, cm: 30.48, mm: 304.8, μm: 3.048e5, nm: 3.048e8, in: 12, ft: 1, yd: 0.333333, mi: 0.000189394, ly: 3.2217e-17 },
             yd: { m: 0.9144, km: 0.0009144, cm: 91.44, mm: 914.4, μm: 9.144e5, nm: 9.144e8, in: 36, ft: 3, yd: 1, mi: 0.000568182, ly: 9.6652e-17 },
             mi: { m: 1609.34, km: 1.60934, cm: 160934, mm: 1.609e6, μm: 1.609e9, nm: 1.609e12, in: 63360, ft: 5280, yd: 1760, mi: 1, ly: 1.7011e-13 },
-            ly: { m: 9.461e15, km: 9.461e12, cm: 9.461e17, mm: 9.461e18, μm: 9.461e21, nm: 9.461e24, in: 3.725e17, ft: 3.104e16, yd: 1.035e16, mi: 5.879e12, ly: 1 }
+            ly: { m: 9.461e15, km: 9.461e12, cm: 9.461e17, mm: 9.461e18, μm: 9.461e21, nm: 9.461e24, in: 3.725e17, ft: 3.104e16, yd: 1.035e16, mi: 5.879e12, ly: 1 },
+
+            // Electricity conversions
+            // Charge
+            C: { C: 1, uC: 1e6, nC: 1e9 },
+            uC: { C: 1e-6, uC: 1, nC: 1e3 },
+            nC: { C: 1e-9, uC: 1e-3, nC: 1 },
+            // Current
+            A: { A: 1, mA: 1e3, uA: 1e6 },
+            mA: { A: 1e-3, mA: 1, uA: 1e3 },
+            uA: { A: 1e-6, mA: 1e-3, uA: 1 },
+            // Voltage
+            V: { V: 1, kV: 1e-3, mV: 1e3 },
+            kV: { V: 1e3, kV: 1, mV: 1e6 },
+            mV: { V: 1e-3, kV: 1e-6, mV: 1 },
+            // Resistance
+            Ohm: { Ohm: 1, kOhm: 1e-3, MOhm: 1e-6 },
+            kOhm: { Ohm: 1e3, kOhm: 1, MOhm: 1e-3 },
+            MOhm: { Ohm: 1e6, kOhm: 1e3, MOhm: 1 },
+
+            // Light conversions
+            // Luminous Flux
+            lm: { lm: 1, cd_sr: 1 }, // 1 Lumen = 1 Candela-steradian
+            cd_sr: { lm: 1, cd_sr: 1 },
+            // Illuminance
+            lx: { lx: 1, fc: 0.092903 }, // 1 Lux = 0.092903 Foot-candle
+            fc: { lx: 10.7639, fc: 1 },
+            // Luminance
+            cd_m2: { cd_m2: 1, nit: 1 }, // 1 cd/m^2 = 1 Nit
+            nit: { cd_m2: 1, nit: 1 },
+
+            // Heat (Energy) conversions
+            J: { J: 1, kJ: 1e-3, cal: 0.239006, BTU: 0.000947817 },
+            kJ: { J: 1e3, kJ: 1, cal: 239.006, BTU: 0.947817 },
+            cal: { J: 4.184, kJ: 0.004184, cal: 1, BTU: 0.00396567 },
+            BTU: { J: 1055.06, kJ: 1.05506, cal: 252.164, BTU: 1 },
+
+            // Fluids (Volume Flow Rate) conversions
+            m3_s: { m3_s: 1, L_s: 1e3, gal_min: 15850.3, ft3_s: 35.3147 },
+            L_s: { m3_s: 1e-3, L_s: 1, gal_min: 15.8503, ft3_s: 0.0353147 },
+            gal_min: { m3_s: 6.309e-5, L_s: 0.06309, gal_min: 1, ft3_s: 0.002228 },
+            ft3_s: { m3_s: 0.0283168, L_s: 28.3168, gal_min: 448.832, ft3_s: 1 }
         };
-        
+
         // Function to perform conversion
         function convertUnits() {
             const value = parseFloat(inputValue.value) || 0;
             const from = fromUnit.value;
             const to = toUnit.value;
             
-            // Get the conversion factor
-            const factor = conversionFactors[from][to];
-            
-            // Calculate result
-            const result = value * factor;
-            
-            // Display result
-            resultValue.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
-            resultUnit.textContent = toUnit.options[toUnit.selectedIndex].text;
+            // Check if conversion is possible between selected units
+            if (conversionFactors[from] && conversionFactors[from][to] !== undefined) {
+                const factor = conversionFactors[from][to];
+                const result = value * factor;
+                resultValue.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
+                resultUnit.textContent = toUnit.options[toUnit.selectedIndex].text;
+            } else {
+                resultValue.textContent = "N/A";
+                resultUnit.textContent = "Conversion Not Available";
+            }
         }
         
         // Swap units function
@@ -947,7 +1090,6 @@
                     card.style.display = 'none';
                 }
             });
-            
             // Scroll to converters section if search term exists
             if (searchTerm && found) {
                 document.querySelector('.converters-grid').scrollIntoView({ behavior: 'smooth' });
@@ -963,7 +1105,6 @@
         
         // Initialize converter
         convertUnits();
-        
         // Add category click functionality
         document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', function() {
