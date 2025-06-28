@@ -18,9 +18,10 @@
             --success: #28a745;
             --warning: #ffc107;
             --danger: #dc3545;
-            --border-radius: 8px;
-            --box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             --transition: all 0.3s ease;
+            --gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
         }
 
         * {
@@ -36,16 +37,20 @@
             min-height: 100vh;
             line-height: 1.6;
             padding-bottom: 40px;
+            overflow-x: hidden;
         }
 
+        /* 3D Effect for Header */
         header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
             padding: 0.8rem 5%;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
             position: sticky;
             top: 0;
             z-index: 100;
+            transform: translateZ(10px);
+            border-bottom: 3px solid rgba(255,255,255,0.1);
         }
 
         .header-content {
@@ -64,10 +69,12 @@
             font-size: 1.8rem;
             font-weight: 700;
             font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .logo i {
             color: var(--warning);
+            text-shadow: 0 0 10px rgba(255,193,7,0.5);
         }
 
         .top-nav {
@@ -80,18 +87,22 @@
             color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 500;
-            padding: 6px 12px;
+            padding: 8px 15px;
             border-radius: 30px;
             transition: var(--transition);
             font-size: 1rem;
             display: flex;
             align-items: center;
             gap: 6px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
         }
 
         .top-nav a:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.2);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .search-container {
@@ -107,10 +118,11 @@
             border-radius: 50px;
             border: none;
             font-size: 1rem;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
             color: white;
             transition: var(--transition);
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
         }
 
         .search-container input::placeholder {
@@ -119,7 +131,7 @@
 
         .search-container input:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.35);
             box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
         }
 
@@ -134,7 +146,10 @@
         .main-nav {
             background: white;
             padding: 0.8rem 5%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+            position: sticky;
+            top: 70px;
+            z-index: 99;
         }
 
         .nav-links {
@@ -168,7 +183,7 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: var(--primary);
+            background: var(--accent);
             transition: var(--transition);
         }
 
@@ -184,32 +199,46 @@
 
         .hero {
             text-align: center;
-            padding: 3rem 0;
+            padding: 4rem 0 3rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: var(--gradient);
+            z-index: -1;
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             margin-bottom: 1rem;
-            color: var(--secondary);
+            color: white;
             font-family: 'Poppins', sans-serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.15);
         }
 
         .hero p {
             font-size: 1.2rem;
-            color: var(--gray);
+            color: rgba(255,255,255,0.9);
             max-width: 700px;
             margin: 0 auto 2rem;
         }
 
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
             margin-top: 1.5rem;
         }
 
         .btn {
-            padding: 12px 28px;
+            padding: 14px 32px;
             border: none;
             border-radius: 50px;
             font-weight: 600;
@@ -217,32 +246,55 @@
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            font-size: 1rem;
+            gap: 10px;
+            font-size: 1.1rem;
+            transform: translateZ(0);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            z-index: 0;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .btn:hover:before {
+            transform: translateX(0);
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 10px rgba(44, 111, 187, 0.3);
+            box-shadow: 0 6px 20px rgba(44, 111, 187, 0.4);
         }
 
         .btn-primary:hover {
             background: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(44, 111, 187, 0.4);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 10px 25px rgba(44, 111, 187, 0.5);
         }
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid white;
+            color: white;
+            backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.15);
         }
 
         .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.02);
         }
 
         .converter-container {
@@ -251,10 +303,18 @@
             box-shadow: var(--box-shadow);
             overflow: hidden;
             margin-bottom: 3rem;
+            transform: translateZ(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .converter-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
         }
 
         .converter-header {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: var(--gradient);
             color: white;
             padding: 1.2rem 1.5rem;
             font-weight: 600;
@@ -267,6 +327,7 @@
 
         .converter-content {
             padding: 2rem;
+            background: #fff;
         }
         
         .category-selector {
@@ -282,10 +343,11 @@
             padding: 5px;
             flex-wrap: wrap;
             justify-content: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .category-tab {
-            padding: 8px 20px;
+            padding: 10px 22px;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
@@ -293,12 +355,14 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            background: transparent;
         }
         
-        .category-tab.active {
+        .category-tab.active, .category-tab:hover {
             background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             color: var(--primary);
+            transform: translateY(-3px);
         }
 
         .converter-grid {
@@ -324,29 +388,41 @@
             font-weight: 600;
             color: var(--gray);
             font-size: 1rem;
+            padding-left: 8px;
         }
 
+        /* Enhanced Input Styling */
         .input-group input, .input-group select {
-            padding: 15px;
-            border: 1px solid var(--light-gray);
+            padding: 16px 18px;
+            border: 1px solid #e0e0e0;
             border-radius: var(--border-radius);
             font-size: 1.1rem;
             transition: var(--transition);
             width: 100%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            background: white;
+            position: relative;
+            z-index: 1;
         }
 
         .input-group input:focus, .input-group select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.2);
+            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.2), 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .input-group input {
+            font-weight: 600;
+            color: var(--dark);
+            background: #f9fbfd;
         }
 
         .swap-btn {
             background: var(--light);
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -355,40 +431,63 @@
             transition: var(--transition);
             align-self: flex-end;
             margin-bottom: 30px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: white;
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
 
         .swap-btn:hover {
             background: var(--accent);
             color: white;
-            transform: rotate(180deg);
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 8px 20px rgba(66, 165, 245, 0.4);
         }
 
         .result-container {
             margin-top: 1rem;
-            padding: 1.5rem;
+            padding: 1.8rem;
             background: var(--light);
             border-radius: var(--border-radius);
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-left: 4px solid var(--primary);
-            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            background: linear-gradient(to right, #f0f8ff, #f8fdff);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .result-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(66,165,245,0.05) 0%, rgba(255,255,255,0.1) 100%);
+            z-index: 0;
         }
 
         .result-value {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             color: var(--primary);
             font-family: 'Poppins', sans-serif;
+            position: relative;
+            z-index: 1;
         }
 
         .result-unit {
             font-size: 1.2rem;
             color: var(--gray);
-            background: rgba(66, 165, 245, 0.1);
-            padding: 5px 12px;
+            background: rgba(66, 165, 245, 0.15);
+            padding: 8px 18px;
             border-radius: 30px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
         }
 
         .converter-actions {
@@ -399,8 +498,9 @@
         }
 
         .converter-actions .btn {
-            padding: 10px 20px;
-            font-size: 0.95rem;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 12px;
         }
 
         .categories {
@@ -409,9 +509,9 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             color: var(--secondary);
-            font-size: 2rem;
+            font-size: 2.2rem;
             position: relative;
             font-family: 'Poppins', sans-serif;
         }
@@ -419,67 +519,96 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--accent);
-            border-radius: 2px;
+            border-radius: 3px;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem;
         }
 
         .category-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 1.8rem 1.5rem;
+            padding: 2rem 1.5rem;
             text-align: center;
             transition: var(--transition);
             cursor: pointer;
-            border: 1px solid var(--light-gray);
+            border: 1px solid rgba(0,0,0,0.05);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
         }
 
         .category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+            transform: translateY(-15px) perspective(1000px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             border-color: var(--accent);
         }
 
+        .category-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(66,165,245,0.05) 0%, rgba(255,255,255,0) 100%);
+            z-index: 0;
+        }
+
         .category-card i {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             color: var(--primary);
             margin-bottom: 1rem;
             background: rgba(66, 165, 245, 0.1);
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.8rem;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .category-card:hover i {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 8px 20px rgba(66,165,245,0.3);
         }
 
         .category-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--secondary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            z-index: 1;
         }
 
         .category-card p {
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .converters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
             margin: 3rem 0;
         }
 
@@ -487,48 +616,68 @@
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 2rem;
+            padding: 2.2rem;
             transition: var(--transition);
             position: relative;
             overflow: hidden;
             border-top: 4px solid var(--accent);
+            transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
         }
 
         .converter-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-10px) perspective(1000px) rotateX(5deg) rotateY(0deg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .converter-card h3 {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             color: var(--secondary);
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .converter-card h3 i {
             color: var(--accent);
             background: rgba(66, 165, 245, 0.1);
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .converter-card:hover h3 i {
+            transform: rotate(10deg);
+            background: var(--gradient);
+            color: white;
         }
 
         .converter-card ul {
             list-style: none;
             padding-left: 0;
+            position: relative;
+            z-index: 1;
         }
 
         .converter-card li {
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--light-gray);
             display: flex;
             align-items: center;
+            transition: var(--transition);
+        }
+
+        .converter-card li:hover {
+            background: rgba(66, 165, 245, 0.05);
+            border-radius: 8px;
+            transform: translateX(5px);
         }
 
         .converter-card li:last-child {
@@ -541,18 +690,24 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             width: 100%;
+            font-weight: 500;
         }
 
         .converter-card a:hover {
             color: var(--primary);
-            transform: translateX(5px);
         }
 
         .converter-card a i {
             color: var(--accent);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .converter-card a:hover i {
+            transform: translateX(5px);
+            color: var(--primary);
         }
 
         .quick-links {
@@ -562,20 +717,48 @@
             padding: 3rem;
             margin: 3rem 0;
             background: linear-gradient(to right, #f9fbfd, #ffffff);
+            position: relative;
+            overflow: hidden;
+            transform: translateZ(0);
+        }
+
+        .quick-links:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(66,165,245,0.03) 0%, rgba(255,255,255,0) 100%);
+            z-index: 0;
         }
 
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            position: relative;
+            z-index: 1;
         }
 
         .link-group h3 {
             color: var(--secondary);
-            margin-bottom: 1.5rem;
-            padding-bottom: 10px;
+            margin-bottom: 1.8rem;
+            padding-bottom: 12px;
             border-bottom: 2px solid var(--light-gray);
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+            position: relative;
+        }
+
+        .link-group h3:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 2px;
         }
 
         .link-group ul {
@@ -583,7 +766,7 @@
         }
 
         .link-group li {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .link-group a {
@@ -592,30 +775,36 @@
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.05rem;
+            gap: 15px;
+            font-size: 1.1rem;
             cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 8px;
         }
 
         .link-group a:hover {
             color: var(--primary);
+            background: rgba(66, 165, 245, 0.05);
+            transform: translateX(5px);
         }
 
         .link-group a i {
             color: var(--accent);
             background: rgba(66, 165, 245, 0.1);
-            width: 36px;
-            height: 36px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
+            border-radius: 12px;
             transition: var(--transition);
+            font-size: 1.2rem;
         }
 
         .link-group a:hover i {
             background: var(--accent);
             color: white;
+            transform: rotate(10deg);
         }
 
         footer {
@@ -623,15 +812,30 @@
             color: white;
             padding: 4rem 0 0;
             margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(26,78,142,0.5) 100%);
+            z-index: 0;
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 3rem;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-section {
@@ -639,7 +843,7 @@
         }
 
         .footer-section h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 1.8rem;
             color: var(--accent);
             position: relative;
@@ -669,7 +873,7 @@
         }
 
         .footer-section li {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .footer-section a {
@@ -683,19 +887,21 @@
 
         .footer-section a:hover {
             color: white;
+            transform: translateX(5px);
         }
 
         .contact-info li {
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-info i {
             color: var(--accent);
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-top: 5px;
+            min-width: 25px;
         }
 
         .social-links {
@@ -708,8 +914,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             color: white;
@@ -719,7 +925,7 @@
 
         .social-links a:hover {
             background: var(--accent);
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.1);
         }
 
         .creator {
@@ -735,6 +941,8 @@
             border-top: 1px solid #444;
             margin-top: 2rem;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
         .copyright a {
@@ -744,6 +952,13 @@
 
         .copyright a:hover {
             text-decoration: underline;
+        }
+
+        .inspiration {
+            font-style: italic;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
+            font-size: 0.95rem;
         }
 
         /* Notification */
@@ -815,6 +1030,7 @@
             
             .category-tab {
                 padding: 8px 12px;
+                font-size: 0.95rem;
             }
         }
 
@@ -834,6 +1050,10 @@
             
             .converter-actions {
                 flex-direction: column;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -1160,18 +1380,16 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-envelope"></i> contact@convertwizard.com</li>
-                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Conversion Street, Unit City</li>
+                    <li><i class="fas fa-envelope"></i> angshuman.ds2020@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> +91 9038394841</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Ichapur, West Bengal, India</li>
                 </ul>
             </div>
         </div>
         
         <div class="copyright">
             <p>&copy; 2023 ConvertWizard. All rights reserved. | Created by Angshuman Das</p>
-            <p>Recommended Hosting: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a> (free), 
-            <a href="https://www.netlify.com/" target="_blank">Netlify</a> (free tier), or 
-            <a href="https://vercel.com/" target="_blank">Vercel</a> (free tier)</p>
+            <p class="inspiration">"Crafted with precision and passion - where every conversion tells a story."</p>
         </div>
     </footer>
 
@@ -1365,20 +1583,142 @@
                     atm: { Pa: 101325, kPa: 101.325, MPa: 0.101325, bar: 1.01325, psi: 14.6959, atm: 1 }
                 }
             },
-            angle: {
+            flow: {
                 units: [
-                    { id: 'deg', name: 'Degree (°)' },
-                    { id: 'rad', name: 'Radian (rad)' },
-                    { id: 'grad', name: 'Gradian (grad)' },
-                    { id: 'arcmin', name: 'Arcminute' },
-                    { id: 'arcsec', name: 'Arcsecond' }
+                    { id: 'L/s', name: 'Liters per second (L/s)' },
+                    { id: 'm3/s', name: 'Cubic meters per second (m³/s)' },
+                    { id: 'gal/min', name: 'Gallons per minute (gal/min)' },
+                    { id: 'ft3/s', name: 'Cubic feet per second (ft³/s)' }
                 ],
                 factors: {
-                    deg: { deg: 1, rad: Math.PI/180, grad: 10/9, arcmin: 60, arcsec: 3600 },
-                    rad: { deg: 180/Math.PI, rad: 1, grad: 200/Math.PI, arcmin: 180*60/Math.PI, arcsec: 180*3600/Math.PI },
-                    grad: { deg: 0.9, rad: Math.PI/200, grad: 1, arcmin: 54, arcsec: 3240 },
-                    arcmin: { deg: 1/60, rad: Math.PI/(180*60), grad: 1/54, arcmin: 1, arcsec: 60 },
-                    arcsec: { deg: 1/3600, rad: Math.PI/(180*3600), grad: 1/3240, arcmin: 1/60, arcsec: 1 }
+                    'L/s': { 'L/s': 1, 'm3/s': 0.001, 'gal/min': 15.8503, 'ft3/s': 0.0353147 },
+                    'm3/s': { 'L/s': 1000, 'm3/s': 1, 'gal/min': 15850.3, 'ft3/s': 35.3147 },
+                    'gal/min': { 'L/s': 0.0630902, 'm3/s': 0.0000630902, 'gal/min': 1, 'ft3/s': 0.00222801 },
+                    'ft3/s': { 'L/s': 28.3168, 'm3/s': 0.0283168, 'gal/min': 448.831, 'ft3/s': 1 }
+                }
+            },
+            viscosity: {
+                units: [
+                    { id: 'Pa·s', name: 'Pascal-second (Pa·s)' },
+                    { id: 'cP', name: 'Centipoise (cP)' },
+                    { id: 'P', name: 'Poise (P)' }
+                ],
+                factors: {
+                    'Pa·s': { 'Pa·s': 1, 'cP': 1000, 'P': 10 },
+                    'cP': { 'Pa·s': 0.001, 'cP': 1, 'P': 0.01 },
+                    'P': { 'Pa·s': 0.1, 'cP': 100, 'P': 1 }
+                }
+            },
+            density: {
+                units: [
+                    { id: 'kg/m3', name: 'Kilograms per cubic meter (kg/m³)' },
+                    { id: 'g/cm3', name: 'Grams per cubic centimeter (g/cm³)' },
+                    { id: 'lb/ft3', name: 'Pounds per cubic foot (lb/ft³)' }
+                ],
+                factors: {
+                    'kg/m3': { 'kg/m3': 1, 'g/cm3': 0.001, 'lb/ft3': 0.062428 },
+                    'g/cm3': { 'kg/m3': 1000, 'g/cm3': 1, 'lb/ft3': 62.428 },
+                    'lb/ft3': { 'kg/m3': 16.0185, 'g/cm3': 0.0160185, 'lb/ft3': 1 }
+                }
+            },
+            illuminance: {
+                units: [
+                    { id: 'lx', name: 'Lux (lx)' },
+                    { id: 'fc', name: 'Foot-candle (fc)' }
+                ],
+                factors: {
+                    'lx': { 'lx': 1, 'fc': 0.092903 },
+                    'fc': { 'lx': 10.7639, 'fc': 1 }
+                }
+            },
+            luminance: {
+                units: [
+                    { id: 'cd/m2', name: 'Candela per square meter (cd/m²)' },
+                    { id: 'fL', name: 'Foot-lambert (fL)' }
+                ],
+                factors: {
+                    'cd/m2': { 'cd/m2': 1, 'fL': 0.291864 },
+                    'fL': { 'cd/m2': 3.426259, 'fL': 1 }
+                }
+            },
+            'luminous-flux': {
+                units: [
+                    { id: 'lm', name: 'Lumen (lm)' }
+                ],
+                factors: {
+                    'lm': { 'lm': 1 }
+                }
+            },
+            'luminous-intensity': {
+                units: [
+                    { id: 'cd', name: 'Candela (cd)' }
+                ],
+                factors: {
+                    'cd': { 'cd': 1 }
+                }
+            },
+            wavelength: {
+                units: [
+                    { id: 'nm', name: 'Nanometer (nm)' },
+                    { id: 'μm', name: 'Micrometer (μm)' },
+                    { id: 'mm', name: 'Millimeter (mm)' }
+                ],
+                factors: {
+                    'nm': { 'nm': 1, 'μm': 0.001, 'mm': 0.000001 },
+                    'μm': { 'nm': 1000, 'μm': 1, 'mm': 0.001 },
+                    'mm': { 'nm': 1000000, 'μm': 1000, 'mm': 1 }
+                }
+            },
+            voltage: {
+                units: [
+                    { id: 'V', name: 'Volt (V)' },
+                    { id: 'mV', name: 'Millivolt (mV)' },
+                    { id: 'kV', name: 'Kilovolt (kV)' }
+                ],
+                factors: {
+                    'V': { 'V': 1, 'mV': 1000, 'kV': 0.001 },
+                    'mV': { 'V': 0.001, 'mV': 1, 'kV': 0.000001 },
+                    'kV': { 'V': 1000, 'mV': 1000000, 'kV': 1 }
+                }
+            },
+            current: {
+                units: [
+                    { id: 'A', name: 'Ampere (A)' },
+                    { id: 'mA', name: 'Milliampere (mA)' },
+                    { id: 'kA', name: 'Kiloampere (kA)' }
+                ],
+                factors: {
+                    'A': { 'A': 1, 'mA': 1000, 'kA': 0.001 },
+                    'mA': { 'A': 0.001, 'mA': 1, 'kA': 0.000001 },
+                    'kA': { 'A': 1000, 'mA': 1000000, 'kA': 1 }
+                }
+            },
+            resistance: {
+                units: [
+                    { id: 'Ω', name: 'Ohm (Ω)' },
+                    { id: 'mΩ', name: 'Milliohm (mΩ)' },
+                    { id: 'kΩ', name: 'Kiloohm (kΩ)' },
+                    { id: 'MΩ', name: 'Megaohm (MΩ)' }
+                ],
+                factors: {
+                    'Ω': { 'Ω': 1, 'mΩ': 1000, 'kΩ': 0.001, 'MΩ': 0.000001 },
+                    'mΩ': { 'Ω': 0.001, 'mΩ': 1, 'kΩ': 0.000001, 'MΩ': 1e-9 },
+                    'kΩ': { 'Ω': 1000, 'mΩ': 1000000, 'kΩ': 1, 'MΩ': 0.001 },
+                    'MΩ': { 'Ω': 1000000, 'mΩ': 1e9, 'kΩ': 1000, 'MΩ': 1 }
+                }
+            },
+            capacitance: {
+                units: [
+                    { id: 'F', name: 'Farad (F)' },
+                    { id: 'mF', name: 'Millifarad (mF)' },
+                    { id: 'μF', name: 'Microfarad (μF)' },
+                    { id: 'nF', name: 'Nanofarad (nF)' }
+                ],
+                factors: {
+                    'F': { 'F': 1, 'mF': 1000, 'μF': 1000000, 'nF': 1e9 },
+                    'mF': { 'F': 0.001, 'mF': 1, 'μF': 1000, 'nF': 1000000 },
+                    'μF': { 'F': 0.000001, 'mF': 0.001, 'μF': 1, 'nF': 1000 },
+                    'nF': { 'F': 1e-9, 'mF': 0.000001, 'μF': 0.001, 'nF': 1 }
                 }
             },
             energy: {
@@ -1386,29 +1726,49 @@
                     { id: 'J', name: 'Joule (J)' },
                     { id: 'kJ', name: 'Kilojoule (kJ)' },
                     { id: 'cal', name: 'Calorie (cal)' },
-                    { id: 'kcal', name: 'Kilocalorie (kcal)' },
-                    { id: 'kWh', name: 'Kilowatt-hour (kWh)' }
+                    { id: 'kcal', name: 'Kilocalorie (kcal)' }
                 ],
                 factors: {
-                    J: { J: 1, kJ: 0.001, cal: 0.239006, kcal: 0.000239006, kWh: 2.77778e-7 },
-                    kJ: { J: 1000, kJ: 1, cal: 239.006, kcal: 0.239006, kWh: 0.000277778 },
-                    cal: { J: 4.184, kJ: 0.004184, cal: 1, kcal: 0.001, kWh: 1.16279e-6 },
-                    kcal: { J: 4184, kJ: 4.184, cal: 1000, kcal: 1, kWh: 0.00116279 },
-                    kWh: { J: 3.6e6, kJ: 3600, cal: 860421, kcal: 860.421, kWh: 1 }
+                    'J': { 'J': 1, 'kJ': 0.001, 'cal': 0.239006, 'kcal': 0.000239006 },
+                    'kJ': { 'J': 1000, 'kJ': 1, 'cal': 239.006, 'kcal': 0.239006 },
+                    'cal': { 'J': 4.184, 'kJ': 0.004184, 'cal': 1, 'kcal': 0.001 },
+                    'kcal': { 'J': 4184, 'kJ': 4.184, 'cal': 1000, 'kcal': 1 }
                 }
             },
             power: {
                 units: [
                     { id: 'W', name: 'Watt (W)' },
                     { id: 'kW', name: 'Kilowatt (kW)' },
-                    { id: 'MW', name: 'Megawatt (MW)' },
                     { id: 'hp', name: 'Horsepower (hp)' }
                 ],
                 factors: {
-                    W: { W: 1, kW: 0.001, MW: 0.000001, hp: 0.00134102 },
-                    kW: { W: 1000, kW: 1, MW: 0.001, hp: 1.34102 },
-                    MW: { W: 1000000, kW: 1000, MW: 1, hp: 1341.02 },
-                    hp: { W: 745.7, kW: 0.7457, MW: 0.0007457, hp: 1 }
+                    'W': { 'W': 1, 'kW': 0.001, 'hp': 0.00134102 },
+                    'kW': { 'W': 1000, 'kW': 1, 'hp': 1.34102 },
+                    'hp': { 'W': 745.7, 'kW': 0.7457, 'hp': 1 }
+                }
+            },
+            force: {
+                units: [
+                    { id: 'N', name: 'Newton (N)' },
+                    { id: 'kN', name: 'Kilonewton (kN)' },
+                    { id: 'lbf', name: 'Pound-force (lbf)' }
+                ],
+                factors: {
+                    'N': { 'N': 1, 'kN': 0.001, 'lbf': 0.224809 },
+                    'kN': { 'N': 1000, 'kN': 1, 'lbf': 224.809 },
+                    'lbf': { 'N': 4.44822, 'kN': 0.00444822, 'lbf': 1 }
+                }
+            },
+            angle: {
+                units: [
+                    { id: 'deg', name: 'Degree (°)' },
+                    { id: 'rad', name: 'Radian (rad)' },
+                    { id: 'grad', name: 'Gradian (grad)' }
+                ],
+                factors: {
+                    'deg': { 'deg': 1, 'rad': Math.PI/180, 'grad': 10/9 },
+                    'rad': { 'deg': 180/Math.PI, 'rad': 1, 'grad': 200/Math.PI },
+                    'grad': { 'deg': 0.9, 'rad': Math.PI/200, 'grad': 1 }
                 }
             }
         };
@@ -1494,8 +1854,8 @@
         // Change category function
         function changeCategory(category) {
             if (!conversionData[category]) {
-                alert(`Category "${category}" is not implemented yet.`);
-                return;
+                // Provide a fallback to a default category
+                category = 'length';
             }
             
             currentCategory = category;
