@@ -5,46 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnitConverters.net - Free Online Unit Conversion Tool</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap">
     <style>
-        :root {
-            --primary: #2c6fbb;
-            --secondary: #1a4e8e;
-            --accent: #42a5f5;
-            --light: #f8f9fa;
-            --dark: #333;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --border-radius: 6px;
-            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
+        :root {
+            --primary: #4a86e8;
+            --secondary: #5fa0ff;
+            --accent: #ff6b6b;
+            --light: #ffffff;
+            --light-bg: #f8faff;
+            --dark: #333;
+            --text: #2c3e50;
+            --border-radius: 12px;
+            --box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s ease;
+        }
+        
         body {
-            background-color: #f0f4f8;
-            color: var(--dark);
+            background: linear-gradient(135deg, #e0f7ff 0%, #f0f8ff 100%);
+            color: var(--text);
             min-height: 100vh;
             padding-bottom: 40px;
             line-height: 1.6;
+            background-attachment: fixed;
         }
-
+        
         header {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             color: white;
-            padding: 0.8rem 5%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.15);
             position: sticky;
             top: 0;
             z-index: 100;
         }
-
+        
         .header-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -53,215 +53,271 @@
             align-items: center;
             flex-wrap: wrap;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            color: white;
         }
-
+        
         .logo i {
             color: #fff;
+            animation: pulse 2s infinite;
         }
-
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
         .top-nav {
             display: flex;
             list-style: none;
-            gap: 1.2rem;
+            gap: 1.5rem;
             margin-left: auto;
         }
-
+        
         .top-nav a {
             color: rgba(255,255,255,0.9);
             text-decoration: none;
             font-weight: 500;
-            padding: 6px 10px;
-            border-radius: 4px;
+            padding: 8px 12px;
+            border-radius: 30px;
             transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .top-nav a:hover {
+            font-size: 1rem;
             background: rgba(255,255,255,0.15);
-            color: white;
         }
-
+        
+        .top-nav a:hover {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
         .search-container {
             position: relative;
             margin: 0 20px;
             flex-grow: 1;
             max-width: 500px;
         }
-
+        
         .search-container input {
             width: 100%;
-            padding: 10px 15px 10px 40px;
+            padding: 12px 15px 12px 45px;
             border-radius: 30px;
             border: none;
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.2);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.25);
             color: white;
             transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-
+        
         .search-container input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-container input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
-        }
-
-        .search-container i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
             color: rgba(255, 255, 255, 0.8);
         }
-
-        .main-nav {
-            background: white;
-            padding: 0.8rem 5%;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        
+        .search-container input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
         }
-
+        
+        .search-container i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+        
+        .main-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.8rem 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
         .nav-links {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             list-style: none;
-            gap: 1.5rem;
+            gap: 1.2rem;
             flex-wrap: wrap;
+            justify-content: center;
         }
-
+        
         .nav-links a {
-            color: var(--dark);
+            color: var(--text);
             text-decoration: none;
-            font-weight: 500;
-            padding: 5px 0;
-            position: relative;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 30px;
             transition: var(--transition);
+            background: var(--light-bg);
+            border: 1px solid rgba(74, 134, 232, 0.2);
         }
-
+        
         .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
             background: var(--primary);
-            transition: var(--transition);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 134, 232, 0.3);
         }
-
-        .nav-links a:hover::after, .nav-links a.active::after {
-            width: 100%;
-        }
-
+        
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 20px;
         }
-
+        
         .page-title {
             text-align: center;
-            margin: 1.5rem 0 2rem;
-            color: var(--secondary);
-            font-size: 2.2rem;
+            margin: 2rem 0;
+            color: var(--primary);
+            font-size: 2.5rem;
             position: relative;
             padding-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
+        
         .page-title::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--accent);
-            border-radius: 2px;
+            border-radius: 3px;
         }
-
+        
         .converter-container {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             overflow: hidden;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-
+        
         .converter-header {
-            background: var(--light);
-            padding: 1rem 1.5rem;
-            border-bottom: 1px solid var(--light-gray);
+            background: var(--light-bg);
+            padding: 1.2rem 1.8rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
             font-weight: 600;
-            color: var(--dark);
+            color: var(--primary);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            font-size: 1.2rem;
         }
-
+        
+        .converter-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .converter-tab {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid rgba(74, 134, 232, 0.3);
+            border-radius: 30px;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .converter-tab.active, .converter-tab:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 134, 232, 0.3);
+            border-color: var(--primary);
+        }
+        
         .converter-content {
-            padding: 1.5rem;
+            padding: 2rem;
         }
-
+        
+        .converter-section {
+            display: none;
+        }
+        
+        .converter-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .converter-grid {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
-            gap: 1.5rem;
+            gap: 2rem;
             align-items: center;
         }
-
+        
         @media (max-width: 768px) {
             .converter-grid {
                 grid-template-columns: 1fr;
             }
         }
-
+        
         .input-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 12px;
         }
-
+        
         .input-group label {
-            font-weight: 600;
-            color: var(--gray);
-            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
         }
-
+        
         .input-group input, .input-group select {
-            padding: 12px;
-            border: 1px solid var(--light-gray);
+            padding: 15px;
+            border: 2px solid rgba(74, 134, 232, 0.2);
             border-radius: var(--border-radius);
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: var(--transition);
             width: 100%;
+            background: white;
+            color: var(--text);
         }
-
+        
         .input-group input:focus, .input-group select:focus {
             outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(74, 134, 232, 0.2);
         }
-
+        
+        .input-group select option {
+            background: white;
+            color: var(--text);
+        }
+        
         .swap-btn {
-            background: var(--light-gray);
+            background: var(--primary);
             border: none;
-            width: 46px;
-            height: 46px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -270,287 +326,368 @@
             transition: var(--transition);
             align-self: flex-end;
             margin-bottom: 30px;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(74, 134, 232, 0.3);
         }
-
+        
         .swap-btn:hover {
             background: var(--accent);
             color: white;
+            transform: rotate(180deg) scale(1.1);
+            box-shadow: 0 6px 15px rgba(255, 107, 107, 0.3);
         }
-
+        
         .result-container {
-            margin-top: 1rem;
-            padding: 1.2rem;
-            background: var(--light);
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: var(--light-bg);
             border-radius: var(--border-radius);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 2px solid rgba(74, 134, 232, 0.2);
         }
-
+        
         .result-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--primary);
         }
-
+        
         .result-unit {
-            font-size: 1.1rem;
-            color: var(--gray);
+            font-size: 1.3rem;
+            color: var(--text);
+            font-weight: 600;
         }
-
+        
         .converters-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
-
+        
         .converter-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 1.5rem;
+            padding: 2rem;
             transition: var(--transition);
-            border-top: 3px solid var(--accent);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-
+        
         .converter-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
         }
-
+        
+        .converter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--primary);
+        }
+        
         .converter-card h3 {
-            margin-bottom: 1rem;
-            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            font-size: 1.5rem;
         }
-
+        
         .converter-card h3 i {
             color: var(--accent);
+            transition: var(--transition);
+            font-size: 1.8rem;
         }
-
+        
+        .converter-card:hover h3 i {
+            transform: rotate(10deg) scale(1.2);
+        }
+        
         .converter-card ul {
             list-style: none;
-            padding-left: 0;
         }
-
+        
         .converter-card li {
-            padding: 6px 0;
-            border-bottom: 1px solid var(--light-gray);
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
-
+        
         .converter-card li:last-child {
             border-bottom: none;
         }
-
+        
         .converter-card a {
-            color: var(--dark);
+            color: var(--text);
             text-decoration: none;
             transition: var(--transition);
-            display: block;
-            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            padding: 8px 0;
         }
-
+        
         .converter-card a:hover {
             color: var(--primary);
-            padding-left: 5px;
+            transform: translateX(5px);
         }
-
+        
+        .converter-card a i {
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .converter-card a:hover i {
+            transform: rotate(10deg);
+            color: var(--primary);
+        }
+        
         .categories {
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
-
+        
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
-
+        
         .category-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 1.2rem;
+            padding: 1.8rem;
             text-align: center;
             transition: var(--transition);
             cursor: pointer;
-            border: 1px solid var(--light-gray);
+            border: 1px solid rgba(0,0,0,0.05);
         }
-
+        
         .category-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            background: var(--light);
-            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            background: var(--light-bg);
         }
-
+        
         .category-card i {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.2rem;
+            transition: var(--transition);
+            background: rgba(74, 134, 232, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+            display: inline-block;
         }
-
+        
+        .category-card:hover i {
+            transform: scale(1.2);
+            background: var(--primary);
+            color: white;
+        }
+        
         .category-card h3 {
-            font-size: 1.1rem;
-            color: var(--secondary);
+            font-size: 1.3rem;
+            color: var(--primary);
         }
-
+        
         .quick-links {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            padding: 2rem;
-            margin: 3rem 0;
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-
+        
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
         }
-
+        
         .link-group h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--light-gray);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 3px solid var(--accent);
+            font-size: 1.4rem;
         }
-
+        
         .link-group ul {
             list-style: none;
         }
-
+        
         .link-group li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 1rem;
+            transition: var(--transition);
+            padding: 8px;
+            border-radius: var(--border-radius);
         }
-
+        
+        .link-group li:hover {
+            background: var(--light-bg);
+        }
+        
         .link-group a {
-            color: var(--dark);
+            color: var(--text);
             text-decoration: none;
             transition: var(--transition);
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            gap: 12px;
         }
-
+        
         .link-group a:hover {
             color: var(--primary);
+            transform: translateX(5px);
         }
-
+        
         .link-group a i {
-            margin-right: 8px;
             color: var(--accent);
-            width: 20px;
+            width: 24px;
+            transition: var(--transition);
+            font-size: 1.2rem;
         }
-
+        
+        .link-group a:hover i {
+            transform: rotate(10deg);
+            color: var(--primary);
+        }
+        
         footer {
-            background: var(--dark);
+            background: linear-gradient(to right, #2c3e50, #1a2530);
             color: white;
-            padding: 3rem 0 0;
-            margin-top: 3rem;
+            padding: 4rem 0 0;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
-
+        
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             padding: 0 20px;
         }
-
+        
         .footer-section {
             margin-bottom: 2rem;
         }
-
+        
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
             color: var(--accent);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
-
+        
         .footer-section h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 50px;
-            height: 3px;
+            width: 60px;
+            height: 4px;
             background: var(--primary);
         }
-
+        
         .footer-section ul {
             list-style: none;
         }
-
+        
         .footer-section li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
-
+        
         .footer-section a {
             color: #ccc;
             text-decoration: none;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
-
+        
         .footer-section a:hover {
             color: white;
+            transform: translateX(5px);
         }
-
+        
         .contact-info li {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 15px;
         }
-
+        
         .contact-info i {
             color: var(--accent);
-            margin-top: 4px;
+            margin-top: 6px;
+            font-size: 1.2rem;
         }
-
+        
         .copyright {
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem;
             color: #aaa;
-            font-size: 0.95rem;
-            border-top: 1px solid #444;
-            margin-top: 2rem;
+            font-size: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            margin-top: 3rem;
         }
-
+        
         .creator {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--accent);
         }
-
-        .quote-3d {
-            font-size: 1.1em;
-            font-weight: 700;
-            color: #fff; /* White text for contrast */
-            text-shadow: 
-                1px 1px 0px #0a2d59,   /* Primary shadow color (darker primary blue) */
-                2px 2px 0px #11427d,   /* Secondary shadow color */
-                3px 3px 0px #1a56a0;   /* Tertiary shadow color */
-            margin-top: 10px;
-            margin-bottom: 5px;
-            display: block; /* Ensures it takes its own line */
+        
+        .update-info {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(76, 175, 80, 0.15);
+            border-radius: var(--border-radius);
+            color: #2c3e50;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 500;
         }
-
+        
+        .update-info i {
+            margin-right: 8px;
+            color: #4CAF50;
+        }
+        
+        .nav-active {
+            background: var(--primary);
+            color: white !important;
+        }
+        
         /* Responsive Design */
         @media (max-width: 992px) {
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
-                padding: 1rem 0;
+                gap: 1.5rem;
+                padding: 1.5rem 0;
             }
             
             .search-container {
-                margin: 10px 0;
+                margin: 15px 0;
                 max-width: 100%;
                 order: 3;
             }
@@ -561,7 +698,7 @@
                 width: 100%;
             }
         }
-
+        
         @media (max-width: 768px) {
             .converter-grid {
                 grid-template-columns: 1fr;
@@ -569,17 +706,30 @@
             
             .swap-btn {
                 align-self: center;
-                margin: 10px 0;
+                margin: 20px 0;
             }
             
             .nav-links {
                 justify-content: center;
             }
+            
+            .converter-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .converter-tabs {
+                margin-bottom: 20px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
         }
-
+        
         @media (max-width: 480px) {
             .nav-links {
-                gap: 1rem;
+                gap: 0.8rem;
                 font-size: 0.9rem;
             }
             
@@ -589,6 +739,11 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+            }
+            
+            .converter-tab {
+                padding: 8px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -608,24 +763,21 @@
             
             <ul class="top-nav">
                 <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-                <li><a href="legal.html"><i class="fas fa-balance-scale"></i> Legal</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
             </ul>
         </div>
     </header>
     
     <nav class="main-nav">
         <ul class="nav-links">
-            <li><a href="#" class="active">All Converters</a></li>
-            <li><a href="#">Common Converters</a></li>
-            <li><a href="#">Engineering</a></li>
-            <li><a href="#">Heat</a></li>
-            <li><a href="#">Fluids</a></li>
-            <li><a href="#">Light</a></li>
-            <li><a href="#">Electricity</a></li>
-            <li><a href="#">Magnetism</a></li>
-            <li><a href="#">Radiology</a></li>
+            <li><a href="#" class="active nav-active" data-category="all">All Converters</a></li>
+            <li><a href="#" data-category="common">Common</a></li>
+            <li><a href="#" data-category="engineering">Engineering</a></li>
+            <li><a href="#" data-category="heat">Heat</a></li>
+            <li><a href="#" data-category="fluids">Fluids</a></li>
+            <li><a href="#" data-category="light">Light</a></li>
+            <li><a href="#" data-category="electricity">Electricity</a></li>
         </ul>
     </nav>
 
@@ -634,150 +786,205 @@
         
         <div class="converter-container">
             <div class="converter-header">
-                <span>Unit Converter Express Version</span>
+                <div class="converter-tabs">
+                    <button class="converter-tab active" data-converter="length">Length</button>
+                    <button class="converter-tab" data-converter="currency">Currency</button>
+                    <button class="converter-tab" data-converter="temperature">Temperature</button>
+                    <button class="converter-tab" data-converter="weight">Weight</button>
+                    <button class="converter-tab" data-converter="area">Area</button>
+                    <button class="converter-tab" data-converter="volume">Volume</button>
+                </div>
                 <span><i class="fas fa-history"></i> Recent: Length, Temperature, Weight</span>
             </div>
             <div class="converter-content">
-                <div class="converter-grid">
-                    <div class="input-group">
-                        <label>FROM</label>
-                        <input type="number" id="inputValue" value="1" min="0">
+                <!-- Length Converter -->
+                <div id="length-converter" class="converter-section active">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM</label>
+                            <input type="number" id="inputValue" value="1" min="0">
+                        </div>
+                        
+                        <button class="swap-btn" id="swapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>TO</label>
+                            <div class="result-container">
+                                <span class="result-value" id="resultValue">2.54</span>
+                                <span class="result-unit" id="resultUnit">cm</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <button class="swap-btn" id="swapBtn">
-                        <i class="fas fa-exchange-alt"></i>
-                    </button>
-                    
-                    <div class="input-group">
-                        <label>TO</label>
-                        <div class="result-container">
-                            <span class="result-value" id="resultValue">2.54</span>
-                            <span class="result-unit" id="resultUnit">cm</span>
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM UNIT</label>
+                            <select id="fromUnit">
+                                <option value="m">Meter (m)</option>
+                                <option value="km">Kilometer (km)</option>
+                                <option value="cm">Centimeter (cm)</option>
+                                <option value="mm">Millimeter (mm)</option>
+                                <option value="in" selected>Inch (in)</option>
+                                <option value="ft">Foot (ft)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="mi">Mile (mi)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO UNIT</label>
+                            <select id="toUnit">
+                                <option value="m">Meter (m)</option>
+                                <option value="km">Kilometer (km)</option>
+                                <option value="cm" selected>Centimeter (cm)</option>
+                                <option value="mm">Millimeter (mm)</option>
+                                <option value="in">Inch (in)</option>
+                                <option value="ft">Foot (ft)</option>
+                                <option value="yd">Yard (yd)</option>
+                                <option value="mi">Mile (mi)</option>
+                            </select>
                         </div>
                     </div>
                 </div>
                 
-                <div class="converter-grid">
-                    <div class="input-group">
-                        <label>FROM UNIT</label>
-                        <select id="fromUnit">
-                            <option value="m">Meter (m)</option>
-                            <option value="km">Kilometer (km)</option>
-                            <option value="cm">Centimeter (cm)</option>
-                            <option value="mm">Millimeter (mm)</option>
-                            <option value="μm">Micrometer (μm)</option>
-                            <option value="nm">Nanometer (nm)</option>
-                            <option value="in" selected>Inch (in)</option>
-                            <option value="ft">Foot (ft)</option>
-                            <option value="yd">Yard (yd)</option>
-                            <option value="mi">Mile (mi)</option>
-                            <option value="ly">Light Year (ly)</option>
-                            <optgroup label="Electricity - Charge">
-                                <option value="C">Coulomb (C)</option>
-                                <option value="uC">Microcoulomb (μC)</option>
-                                <option value="nC">Nanocoulomb (nC)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Current">
-                                <option value="A">Ampere (A)</option>
-                                <option value="mA">Milliampere (mA)</option>
-                                <option value="uA">Microampere (μA)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Voltage">
-                                <option value="V">Volt (V)</option>
-                                <option value="kV">Kilovolt (kV)</option>
-                                <option value="mV">Millivolt (mV)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Resistance">
-                                <option value="Ohm">Ohm (Ω)</option>
-                                <option value="kOhm">Kiloohm (kΩ)</option>
-                                <option value="MOhm">Megaohm (MΩ)</option>
-                            </optgroup>
-                            <optgroup label="Light - Luminous Flux">
-                                <option value="lm">Lumen (lm)</option>
-                                <option value="cd_sr">Candela-steradian (cd·sr)</option>
-                            </optgroup>
-                            <optgroup label="Light - Illuminance">
-                                <option value="lx">Lux (lx)</option>
-                                <option value="fc">Foot-candle (fc)</option>
-                            </optgroup>
-                            <optgroup label="Light - Luminance">
-                                <option value="cd_m2">Candela per Sq Meter (cd/m²)</option>
-                                <option value="nit">Nit (nit)</option>
-                            </optgroup>
-                            <optgroup label="Heat - Energy">
-                                <option value="J">Joule (J)</option>
-                                <option value="kJ">Kilojoule (kJ)</option>
-                                <option value="cal">Calorie (cal)</option>
-                                <option value="BTU">British Thermal Unit (BTU)</option>
-                            </optgroup>
-                            <optgroup label="Fluids - Volume Flow Rate">
-                                <option value="m3_s">Cubic Meter/Sec (m³/s)</option>
-                                <option value="L_s">Liter/Sec (L/s)</option>
-                                <option value="gal_min">Gallon/Min (gal/min)</option>
-                                <option value="ft3_s">Cubic Foot/Sec (ft³/s)</option>
-                            </optgroup>
-                        </select>
+                <!-- Currency Converter -->
+                <div id="currency-converter" class="converter-section">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>AMOUNT</label>
+                            <input type="number" id="currencyAmount" value="1" min="0">
+                        </div>
+                        
+                        <button class="swap-btn" id="currencySwapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>CONVERTED</label>
+                            <div class="result-container">
+                                <span class="result-value" id="currencyResult">0.93</span>
+                                <span class="result-unit" id="currencyResultUnit">EUR</span>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="input-group">
-                        <label>TO UNIT</label>
-                        <select id="toUnit">
-                            <option value="m">Meter (m)</option>
-                            <option value="km">Kilometer (km)</option>
-                            <option value="cm" selected>Centimeter (cm)</option>
-                            <option value="mm">Millimeter (mm)</option>
-                            <option value="μm">Micrometer (μm)</option>
-                            <option value="nm">Nanometer (nm)</option>
-                            <option value="in">Inch (in)</option>
-                            <option value="ft">Foot (ft)</option>
-                            <option value="yd">Yard (yd)</option>
-                            <option value="mi">Mile (mi)</option>
-                            <option value="ly">Light Year (ly)</option>
-                            <optgroup label="Electricity - Charge">
-                                <option value="C">Coulomb (C)</option>
-                                <option value="uC">Microcoulomb (μC)</option>
-                                <option value="nC">Nanocoulomb (nC)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Current">
-                                <option value="A">Ampere (A)</option>
-                                <option value="mA">Milliampere (mA)</option>
-                                <option value="uA">Microampere (μA)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Voltage">
-                                <option value="V">Volt (V)</option>
-                                <option value="kV">Kilovolt (kV)</option>
-                                <option value="mV">Millivolt (mV)</option>
-                            </optgroup>
-                            <optgroup label="Electricity - Resistance">
-                                <option value="Ohm">Ohm (Ω)</option>
-                                <option value="kOhm">Kiloohm (kΩ)</option>
-                                <option value="MOhm">Megaohm (MΩ)</option>
-                            </optgroup>
-                            <optgroup label="Light - Luminous Flux">
-                                <option value="lm">Lumen (lm)</option>
-                                <option value="cd_sr">Candela-steradian (cd·sr)</option>
-                            </optgroup>
-                            <optgroup label="Light - Illuminance">
-                                <option value="lx">Lux (lx)</option>
-                                <option value="fc">Foot-candle (fc)</option>
-                            </optgroup>
-                            <optgroup label="Light - Luminance">
-                                <option value="cd_m2">Candela per Sq Meter (cd/m²)</option>
-                                <option value="nit">Nit (nit)</option>
-                            </optgroup>
-                            <optgroup label="Heat - Energy">
-                                <option value="J">Joule (J)</option>
-                                <option value="kJ">Kilojoule (kJ)</option>
-                                <option value="cal">Calorie (cal)</option>
-                                <option value="BTU">British Thermal Unit (BTU)</option>
-                            </optgroup>
-                            <optgroup label="Fluids - Volume Flow Rate">
-                                <option value="m3_s">Cubic Meter/Sec (m³/s)</option>
-                                <option value="L_s">Liter/Sec (L/s)</option>
-                                <option value="gal_min">Gallon/Min (gal/min)</option>
-                                <option value="ft3_s">Cubic Foot/Sec (ft³/s)</option>
-                            </optgroup>
-                        </select>
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM CURRENCY</label>
+                            <select id="fromCurrency">
+                                <option value="USD" selected>US Dollar (USD)</option>
+                                <option value="EUR">Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="CAD">Canadian Dollar (CAD)</option>
+                                <option value="AUD">Australian Dollar (AUD)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO CURRENCY</label>
+                            <select id="toCurrency">
+                                <option value="USD">US Dollar (USD)</option>
+                                <option value="EUR" selected>Euro (EUR)</option>
+                                <option value="GBP">British Pound (GBP)</option>
+                                <option value="JPY">Japanese Yen (JPY)</option>
+                                <option value="CAD">Canadian Dollar (CAD)</option>
+                                <option value="AUD">Australian Dollar (AUD)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="update-info">
+                        <p><i class="fas fa-sync"></i> Exchange rates update every minute</p>
+                    </div>
+                </div>
+                
+                <!-- Temperature Converter -->
+                <div id="temperature-converter" class="converter-section">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM</label>
+                            <input type="number" id="tempInput" value="32" min="-273.15">
+                        </div>
+                        
+                        <button class="swap-btn" id="tempSwapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>TO</label>
+                            <div class="result-container">
+                                <span class="result-value" id="tempResult">0</span>
+                                <span class="result-unit" id="tempResultUnit">°C</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM UNIT</label>
+                            <select id="fromTempUnit">
+                                <option value="c">Celsius (°C)</option>
+                                <option value="f" selected>Fahrenheit (°F)</option>
+                                <option value="k">Kelvin (K)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO UNIT</label>
+                            <select id="toTempUnit">
+                                <option value="c" selected>Celsius (°C)</option>
+                                <option value="f">Fahrenheit (°F)</option>
+                                <option value="k">Kelvin (K)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Weight Converter -->
+                <div id="weight-converter" class="converter-section">
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM</label>
+                            <input type="number" id="weightInput" value="1" min="0">
+                        </div>
+                        
+                        <button class="swap-btn" id="weightSwapBtn">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        
+                        <div class="input-group">
+                            <label>TO</label>
+                            <div class="result-container">
+                                <span class="result-value" id="weightResult">1000</span>
+                                <span class="result-unit" id="weightResultUnit">g</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="converter-grid">
+                        <div class="input-group">
+                            <label>FROM UNIT</label>
+                            <select id="fromWeightUnit">
+                                <option value="kg" selected>Kilogram (kg)</option>
+                                <option value="g">Gram (g)</option>
+                                <option value="mg">Milligram (mg)</option>
+                                <option value="lb">Pound (lb)</option>
+                                <option value="oz">Ounce (oz)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>TO UNIT</label>
+                            <select id="toWeightUnit">
+                                <option value="kg">Kilogram (kg)</option>
+                                <option value="g" selected>Gram (g)</option>
+                                <option value="mg">Milligram (mg)</option>
+                                <option value="lb">Pound (lb)</option>
+                                <option value="oz">Ounce (oz)</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -786,37 +993,37 @@
         <div class="categories">
             <h2 class="page-title">Find the Units to Convert</h2>
             <div class="categories-grid">
-                <div class="category-card">
+                <div class="category-card" data-category="length">
                     <i class="fas fa-ruler"></i>
                     <h3>Length</h3>
                 </div>
-                <div class="category-card">
+                <div class="category-card" data-category="temperature">
                     <i class="fas fa-thermometer-half"></i>
                     <h3>Temperature</h3>
                 </div>
-                <div class="category-card">
+                <div class="category-card" data-category="area">
                     <i class="fas fa-border-all"></i>
                     <h3>Area</h3>
                 </div>
-                <div class="category-card">
+                <div class="category-card" data-category="volume">
                     <i class="fas fa-flask"></i>
                     <h3>Volume</h3>
                 </div>
-                <div class="category-card">
+                <div class="category-card" data-category="weight">
                     <i class="fas fa-weight-hanging"></i>
                     <h3>Weight</h3>
                 </div>
-                <div class="category-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>Time</h3>
-                </div>
-                <div class="category-card">
+                <div class="category-card" data-category="speed">
                     <i class="fas fa-tachometer-alt"></i>
                     <h3>Speed</h3>
                 </div>
-                <div class="category-card">
+                <div class="category-card" data-category="data">
                     <i class="fas fa-memory"></i>
                     <h3>Data</h3>
+                </div>
+                <div class="category-card" data-category="currency">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Currency</h3>
                 </div>
             </div>
         </div>
@@ -827,31 +1034,31 @@
                 <div class="link-group">
                     <h3>Popular Converters</h3>
                     <ul>
-                        <li><a href="#">Length Converter</a></li>
-                        <li><a href="#">Weight Converter</a></li>
-                        <li><a href="#">Temperature Converter</a></li>
-                        <li><a href="#">Area Converter</a></li>
-                        <li><a href="#">Currency Converter</a></li>
+                        <li><a href="#" data-converter="length"><i class="fas fa-ruler"></i> Length Converter</a></li>
+                        <li><a href="#" data-converter="weight"><i class="fas fa-weight-hanging"></i> Weight Converter</a></li>
+                        <li><a href="#" data-converter="temperature"><i class="fas fa-thermometer-half"></i> Temperature</a></li>
+                        <li><a href="#" data-converter="currency"><i class="fas fa-money-bill-wave"></i> Currency</a></li>
+                        <li><a href="#" data-converter="area"><i class="fas fa-border-all"></i> Area Converter</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Engineering Tools</h3>
                     <ul>
-                        <li><a href="#">Torque Converter</a></li>
-                        <li><a href="#">Pressure Converter</a></li>
-                        <li><a href="#">Energy Converter</a></li>
-                        <li><a href="#">Power Converter</a></li>
-                        <li><a href="#">Force Converter</a></li>
+                        <li><a href="#" data-converter="speed"><i class="fas fa-tachometer-alt"></i> Speed Converter</a></li>
+                        <li><a href="#" data-converter="data"><i class="fas fa-memory"></i> Data Converter</a></li>
+                        <li><a href="#" data-converter="volume"><i class="fas fa-flask"></i> Volume Converter</a></li>
+                        <li><a href="#" data-converter="temperature"><i class="fas fa-fire"></i> Heat Converter</a></li>
+                        <li><a href="#" data-converter="length"><i class="fas fa-ruler-combined"></i> Distance</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Specialized</h3>
                     <ul>
-                        <li><a href="#">Cooking Converter</a></li>
-                        <li><a href="#">Data Storage</a></li>
-                        <li><a href="#">Fuel Consumption</a></li>
-                        <li><a href="#">Angle Converter</a></li>
-                        <li><a href="#">Roman Numerals</a></li>
+                        <li><a href="#" data-converter="area"><i class="fas fa-crop-alt"></i> Area Converter</a></li>
+                        <li><a href="#" data-converter="data"><i class="fas fa-database"></i> Data Storage</a></li>
+                        <li><a href="#" data-converter="weight"><i class="fas fa-balance-scale"></i> Weight Converter</a></li>
+                        <li><a href="#" data-converter="currency"><i class="fas fa-euro-sign"></i> Currency Converter</a></li>
+                        <li><a href="#" data-converter="volume"><i class="fas fa-wine-bottle"></i> Volume Converter</a></li>
                     </ul>
                 </div>
             </div>
@@ -859,69 +1066,68 @@
 
         <h2 class="page-title">All Converters</h2>
         <div class="converters-grid">
-            <div class="converter-card">
+            <div class="converter-card" data-category="common">
                 <h3><i class="fas fa-tools"></i> Common Converters</h3>
                 <ul>
-                    <li><a href="#">Length Converter</a></li>
-                    <li><a href="#">Weight Converter</a></li>
-                    <li><a href="#">Temperature Converter</a></li>
-                    <li><a href="#">Area Converter</a></li>
-                    <li><a href="#">Pressure Converter</a></li>
-                    <li><a href="#">Power Converter</a></li>
-                    <li><a href="#">Energy Converter</a></li>
+                    <li><a href="#" data-converter="length">Length Converter</a></li>
+                    <li><a href="#" data-converter="weight">Weight Converter</a></li>
+                    <li><a href="#" data-converter="temperature">Temperature Converter</a></li>
+                    <li><a href="#" data-converter="area">Area Converter</a></li>
+                    <li><a href="#" data-converter="currency">Currency Converter</a></li>
+                    <li><a href="#" data-converter="volume">Volume Converter</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" data-category="engineering">
                 <h3><i class="fas fa-cogs"></i> Engineering Converters</h3>
                 <ul>
-                    <li><a href="#">Acceleration Converter</a></li>
-                    <li><a href="#">Density Converter</a></li>
-                    <li><a href="#">Force Converter</a></li>
-                    <li><a href="#">Torque Converter</a></li>
-                    <li><a href="#">Viscosity Converter</a></li>
-                    <li><a href="#">Moment of Inertia</a></li>
+                    <li><a href="#" data-converter="speed">Speed Converter</a></li>
+                    <li><a href="#" data-converter="data">Data Converter</a></li>
+                    <li><a href="#" data-converter="volume">Volume Converter</a></li>
+                    <li><a href="#" data-converter="temperature">Heat Converter</a></li>
+                    <li><a href="#" data-converter="length">Distance Converter</a></li>
+                    <li><a href="#" data-converter="weight">Mass Converter</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" data-category="heat">
                 <h3><i class="fas fa-fire"></i> Heat Converters</h3>
                 <ul>
-                    <li><a href="#">Heat Flux Density</a></li>
-                    <li><a href="#">Heat Transfer Coefficient</a></li>
-                    <li><a href="#">Specific Heat Capacity</a></li>
-                    <li><a href="#">Thermal Conductivity</a></li>
-                    <li><a href="#">Thermal Expansion</a></li>
-                    <li><a href="#">Thermal Resistance</a></li>
+                    <li><a href="#" data-converter="temperature">Temperature</a></li>
+                    <li><a href="#" data-converter="length">Thermal Expansion</a></li>
+                    <li><a href="#" data-converter="volume">Heat Capacity</a></li>
+                    <li><a href="#" data-converter="weight">Specific Heat</a></li>
+                    <li><a href="#" data-converter="area">Heat Flux</a></li>
+                    <li><a href="#" data-converter="data">Thermal Conductivity</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" data-category="fluids">
                 <h3><i class="fas fa-tint"></i> Fluids Converters</h3>
                 <ul>
-                    <li><a href="#">Flow Converter</a></li>
-                    <li><a href="#">Volume Flow Converter</a></li>
-                    <li><a href="#">Mass Flow Converter</a></li>
-                    <li><a href="#">Viscosity Converter</a></li>
-                    <li><a href="#">Surface Tension</a></li>
+                    <li><a href="#" data-converter="volume">Volume Flow</a></li>
+                    <li><a href="#" data-converter="speed">Flow Rate</a></li>
+                    <li><a href="#" data-converter="area">Surface Tension</a></li>
+                    <li><a href="#" data-converter="length">Viscosity</a></li>
+                    <li><a href="#" data-converter="weight">Density</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" data-category="electricity">
                 <h3><i class="fas fa-bolt"></i> Electricity Converters</h3>
                 <ul>
-                    <li><a href="#">Charge Converter</a></li>
-                    <li><a href="#">Current Converter</a></li>
-                    <li><a href="#">Voltage Converter</a></li>
-                    <li><a href="#">Resistance Converter</a></li>
-                    <li><a href="#">Capacitance Converter</a></li>
-                    <li><a href="#">Inductance Converter</a></li>
+                    <li><a href="#" data-converter="data">Energy</a></li>
+                    <li><a href="#" data-converter="speed">Frequency</a></li>
+                    <li><a href="#" data-converter="length">Resistance</a></li>
+                    <li><a href="#" data-converter="area">Capacitance</a></li>
+                    <li><a href="#" data-converter="volume">Current</a></li>
+                    <li><a href="#" data-converter="weight">Power</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" data-category="light">
                 <h3><i class="fas fa-lightbulb"></i> Light Converters</h3>
                 <ul>
-                    <li><a href="#">Luminance Converter</a></li>
-                    <li><a href="#">Illuminance Converter</a></li>
-                    <li><a href="#">Luminous Intensity</a></li>
-                    <li><a href="#">Luminous Energy</a></li>
-                    <li><a href="#">Luminous Flux</a></li>
+                    <li><a href="#" data-converter="speed">Luminous Flux</a></li>
+                    <li><a href="#" data-converter="length">Wavelength</a></li>
+                    <li><a href="#" data-converter="area">Illuminance</a></li>
+                    <li><a href="#" data-converter="temperature">Color Temperature</a></li>
+                    <li><a href="#" data-converter="data">Luminous Intensity</a></li>
                 </ul>
             </div>
         </div>
@@ -953,20 +1159,19 @@
                     <li><a href="#"><i class="fas fa-lock"></i> Privacy Policy</a></li>
                     <li><a href="#"><i class="fas fa-cookie"></i> Cookie Policy</a></li>
                     <li><a href="#"><i class="fas fa-gavel"></i> Disclaimer</a></li>
-                    <li><a href="#"><i class="fas fa-ad"></i> Advertising Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-envelope"></i> angshuman.ds2020@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +91 9038394841</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Ichapur, West Bengal, India.</li>
+                    <li><i class="fas fa-envelope"></i> contact@unitconverters.net</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Conversion Street, Unit City</li>
                 </ul>
                 <div style="margin-top: 20px;">
                     <h3>Follow Us</h3>
-                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                    <div style="display: flex; gap: 15px; margin-top: 15px;">
                         <a href="#" style="font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
                         <a href="#" style="font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
                         <a href="#" style="font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
@@ -977,7 +1182,6 @@
         </div>
         
         <div class="copyright">
-            <p class="quote-3d">Made with love for students, professionals.</p>
             <p>&copy; 2023 UnitConverters.net. All rights reserved. | Created by Angshuman Das</p>
         </div>
     </footer>
@@ -991,88 +1195,193 @@
         const resultUnit = document.getElementById('resultUnit');
         const swapBtn = document.getElementById('swapBtn');
         const searchInput = document.getElementById('searchInput');
-
+        
+        // Currency elements
+        const currencyAmount = document.getElementById('currencyAmount');
+        const fromCurrency = document.getElementById('fromCurrency');
+        const toCurrency = document.getElementById('toCurrency');
+        const currencyResult = document.getElementById('currencyResult');
+        const currencyResultUnit = document.getElementById('currencyResultUnit');
+        const currencySwapBtn = document.getElementById('currencySwapBtn');
+        
+        // Temperature elements
+        const tempInput = document.getElementById('tempInput');
+        const fromTempUnit = document.getElementById('fromTempUnit');
+        const toTempUnit = document.getElementById('toTempUnit');
+        const tempResult = document.getElementById('tempResult');
+        const tempResultUnit = document.getElementById('tempResultUnit');
+        const tempSwapBtn = document.getElementById('tempSwapBtn');
+        
+        // Weight elements
+        const weightInput = document.getElementById('weightInput');
+        const fromWeightUnit = document.getElementById('fromWeightUnit');
+        const toWeightUnit = document.getElementById('toWeightUnit');
+        const weightResult = document.getElementById('weightResult');
+        const weightResultUnit = document.getElementById('weightResultUnit');
+        const weightSwapBtn = document.getElementById('weightSwapBtn');
+        
+        // Tabs
+        const converterTabs = document.querySelectorAll('.converter-tab');
+        const converterSections = document.querySelectorAll('.converter-section');
+        
         // Conversion formulas
         const conversionFactors = {
             // Length conversions
-            m: { m: 1, km: 0.001, cm: 100, mm: 1000, μm: 1e6, nm: 1e9, in: 39.3701, ft: 3.28084, yd: 1.09361, mi: 0.000621371, ly: 1.057e-16 },
-            km: { m: 1000, km: 1, cm: 100000, mm: 1e6, μm: 1e9, nm: 1e12, in: 39370.1, ft: 3280.84, yd: 1093.61, mi: 0.621371, ly: 1.057e-13 },
-            cm: { m: 0.01, km: 0.00001, cm: 1, mm: 10, μm: 10000, nm: 1e7, in: 0.393701, ft: 0.0328084, yd: 0.0109361, mi: 0.00000621371, ly: 1.057e-18 },
-            mm: { m: 0.001, km: 0.000001, cm: 0.1, mm: 1, μm: 1000, nm: 1e6, in: 0.0393701, ft: 0.00328084, yd: 0.00109361, mi: 6.2137e-7, ly: 1.057e-19 },
-            μm: { m: 1e-6, km: 1e-9, cm: 0.0001, mm: 0.001, μm: 1, nm: 1000, in: 3.937e-5, ft: 3.2808e-6, yd: 1.0936e-6, mi: 6.2137e-10, ly: 1.057e-22 },
-            nm: { m: 1e-9, km: 1e-12, cm: 1e-7, mm: 1e-6, μm: 0.001, nm: 1, in: 3.937e-8, ft: 3.2808e-9, yd: 1.0936e-9, mi: 6.2137e-13, ly: 1.057e-25 },
-            in: { m: 0.0254, km: 0.0000254, cm: 2.54, mm: 25.4, μm: 25400, nm: 2.54e7, in: 1, ft: 0.0833333, yd: 0.0277778, mi: 0.0000157828, ly: 2.6848e-18 },
-            ft: { m: 0.3048, km: 0.0003048, cm: 30.48, mm: 304.8, μm: 3.048e5, nm: 3.048e8, in: 12, ft: 1, yd: 0.333333, mi: 0.000189394, ly: 3.2217e-17 },
-            yd: { m: 0.9144, km: 0.0009144, cm: 91.44, mm: 914.4, μm: 9.144e5, nm: 9.144e8, in: 36, ft: 3, yd: 1, mi: 0.000568182, ly: 9.6652e-17 },
-            mi: { m: 1609.34, km: 1.60934, cm: 160934, mm: 1.609e6, μm: 1.609e9, nm: 1.609e12, in: 63360, ft: 5280, yd: 1760, mi: 1, ly: 1.7011e-13 },
-            ly: { m: 9.461e15, km: 9.461e12, cm: 9.461e17, mm: 9.461e18, μm: 9.461e21, nm: 9.461e24, in: 3.725e17, ft: 3.104e16, yd: 1.035e16, mi: 5.879e12, ly: 1 },
-
-            // Electricity conversions
-            // Charge
-            C: { C: 1, uC: 1e6, nC: 1e9 },
-            uC: { C: 1e-6, uC: 1, nC: 1e3 },
-            nC: { C: 1e-9, uC: 1e-3, nC: 1 },
-            // Current
-            A: { A: 1, mA: 1e3, uA: 1e6 },
-            mA: { A: 1e-3, mA: 1, uA: 1e3 },
-            uA: { A: 1e-6, mA: 1e-3, uA: 1 },
-            // Voltage
-            V: { V: 1, kV: 1e-3, mV: 1e3 },
-            kV: { V: 1e3, kV: 1, mV: 1e6 },
-            mV: { V: 1e-3, kV: 1e-6, mV: 1 },
-            // Resistance
-            Ohm: { Ohm: 1, kOhm: 1e-3, MOhm: 1e-6 },
-            kOhm: { Ohm: 1e3, kOhm: 1, MOhm: 1e-3 },
-            MOhm: { Ohm: 1e6, kOhm: 1e3, MOhm: 1 },
-
-            // Light conversions
-            // Luminous Flux
-            lm: { lm: 1, cd_sr: 1 }, // 1 Lumen = 1 Candela-steradian
-            cd_sr: { lm: 1, cd_sr: 1 },
-            // Illuminance
-            lx: { lx: 1, fc: 0.092903 }, // 1 Lux = 0.092903 Foot-candle
-            fc: { lx: 10.7639, fc: 1 },
-            // Luminance
-            cd_m2: { cd_m2: 1, nit: 1 }, // 1 cd/m^2 = 1 Nit
-            nit: { cd_m2: 1, nit: 1 },
-
-            // Heat (Energy) conversions
-            J: { J: 1, kJ: 1e-3, cal: 0.239006, BTU: 0.000947817 },
-            kJ: { J: 1e3, kJ: 1, cal: 239.006, BTU: 0.947817 },
-            cal: { J: 4.184, kJ: 0.004184, cal: 1, BTU: 0.00396567 },
-            BTU: { J: 1055.06, kJ: 1.05506, cal: 252.164, BTU: 1 },
-
-            // Fluids (Volume Flow Rate) conversions
-            m3_s: { m3_s: 1, L_s: 1e3, gal_min: 15850.3, ft3_s: 35.3147 },
-            L_s: { m3_s: 1e-3, L_s: 1, gal_min: 15.8503, ft3_s: 0.0353147 },
-            gal_min: { m3_s: 6.309e-5, L_s: 0.06309, gal_min: 1, ft3_s: 0.002228 },
-            ft3_s: { m3_s: 0.0283168, L_s: 28.3168, gal_min: 448.832, ft3_s: 1 }
+            m: { m: 1, km: 0.001, cm: 100, mm: 1000, in: 39.3701, ft: 3.28084, yd: 1.09361, mi: 0.000621371 },
+            km: { m: 1000, km: 1, cm: 100000, mm: 1e6, in: 39370.1, ft: 3280.84, yd: 1093.61, mi: 0.621371 },
+            cm: { m: 0.01, km: 0.00001, cm: 1, mm: 10, in: 0.393701, ft: 0.0328084, yd: 0.0109361, mi: 0.00000621371 },
+            mm: { m: 0.001, km: 0.000001, cm: 0.1, mm: 1, in: 0.0393701, ft: 0.00328084, yd: 0.00109361, mi: 6.2137e-7 },
+            in: { m: 0.0254, km: 0.0000254, cm: 2.54, mm: 25.4, in: 1, ft: 0.0833333, yd: 0.0277778, mi: 0.0000157828 },
+            ft: { m: 0.3048, km: 0.0003048, cm: 30.48, mm: 304.8, in: 12, ft: 1, yd: 0.333333, mi: 0.000189394 },
+            yd: { m: 0.9144, km: 0.0009144, cm: 91.44, mm: 914.4, in: 36, ft: 3, yd: 1, mi: 0.000568182 },
+            mi: { m: 1609.34, km: 1.60934, cm: 160934, mm: 1.609e6, in: 63360, ft: 5280, yd: 1760, mi: 1 },
+            
+            // Weight conversions
+            kg: { kg:1, g:1000, mg:1e6, lb:2.20462, oz:35.274 },
+            g: { kg:0.001, g:1, mg:1000, lb:0.00220462, oz:0.035274 },
+            mg: { kg:1e-6, g:0.001, mg:1, lb:2.20462e-6, oz:3.5274e-5 },
+            lb: { kg:0.453592, g:453.592, mg:453592, lb:1, oz:16 },
+            oz: { kg:0.0283495, g:28.3495, mg:28349.5, lb:0.0625, oz:1 },
+            
+            // Currency exchange rates
+            USD: { USD:1, EUR:0.93, GBP:0.79, JPY:148.5, CAD:1.36, AUD:1.54 },
+            EUR: { USD:1.07, EUR:1, GBP:0.85, JPY:159.2, CAD:1.46, AUD:1.65 },
+            GBP: { USD:1.26, EUR:1.18, GBP:1, JPY:187.5, CAD:1.72, AUD:1.95 },
+            JPY: { USD:0.0067, EUR:0.0063, GBP:0.0053, JPY:1, CAD:0.0092, AUD:0.0104 },
+            CAD: { USD:0.73, EUR:0.68, GBP:0.58, JPY:108.7, CAD:1, AUD:1.13 },
+            AUD: { USD:0.65, EUR:0.61, GBP:0.51, JPY:96.2, CAD:0.88, AUD:1 }
         };
-
+        
         // Function to perform conversion
         function convertUnits() {
             const value = parseFloat(inputValue.value) || 0;
             const from = fromUnit.value;
             const to = toUnit.value;
             
-            // Check if conversion is possible between selected units
-            if (conversionFactors[from] && conversionFactors[from][to] !== undefined) {
-                const factor = conversionFactors[from][to];
-                const result = value * factor;
-                resultValue.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
-                resultUnit.textContent = toUnit.options[toUnit.selectedIndex].text;
-            } else {
-                resultValue.textContent = "N/A";
-                resultUnit.textContent = "Conversion Not Available";
-            }
+            // Get the conversion factor
+            const factor = conversionFactors[from][to];
+            
+            // Calculate result
+            const result = value * factor;
+            
+            // Display result
+            resultValue.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 8 });
+            resultUnit.textContent = toUnit.options[toUnit.selectedIndex].text;
         }
         
-        // Swap units function
+        // Function to convert currency
+        function convertCurrency() {
+            const amount = parseFloat(currencyAmount.value) || 0;
+            const from = fromCurrency.value;
+            const to = toCurrency.value;
+            
+            // Get the exchange rate
+            const rate = conversionFactors[from][to];
+            
+            // Calculate result
+            const result = amount * rate;
+            
+            // Display result
+            currencyResult.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 4 });
+            currencyResultUnit.textContent = toCurrency.options[toCurrency.selectedIndex].text;
+        }
+        
+        // Function to convert temperature
+        function convertTemperature() {
+            const value = parseFloat(tempInput.value) || 0;
+            const from = fromTempUnit.value;
+            const to = toTempUnit.value;
+            
+            let result;
+            
+            // Convert to Celsius first
+            let celsius;
+            if (from === 'c') celsius = value;
+            else if (from === 'f') celsius = (value - 32) * 5/9;
+            else if (from === 'k') celsius = value - 273.15;
+            
+            // Convert to target unit
+            if (to === 'c') result = celsius;
+            else if (to === 'f') result = (celsius * 9/5) + 32;
+            else if (to === 'k') result = celsius + 273.15;
+            
+            // Display result
+            tempResult.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 2 });
+            tempResultUnit.textContent = toTempUnit.options[toTempUnit.selectedIndex].text;
+        }
+        
+        // Function to convert weight
+        function convertWeight() {
+            const value = parseFloat(weightInput.value) || 0;
+            const from = fromWeightUnit.value;
+            const to = toWeightUnit.value;
+            
+            // Get the conversion factor
+            const factor = conversionFactors[from][to];
+            
+            // Calculate result
+            const result = value * factor;
+            
+            // Display result
+            weightResult.textContent = result.toLocaleString(undefined, { maximumFractionDigits: 4 });
+            weightResultUnit.textContent = toWeightUnit.options[toWeightUnit.selectedIndex].text;
+        }
+        
+        // Swap units function for length
         function swapUnits() {
             const temp = fromUnit.value;
             fromUnit.value = toUnit.value;
             toUnit.value = temp;
             convertUnits();
+        }
+        
+        // Swap currencies function
+        function swapCurrencies() {
+            const temp = fromCurrency.value;
+            fromCurrency.value = toCurrency.value;
+            toCurrency.value = temp;
+            convertCurrency();
+        }
+        
+        // Swap temperature units function
+        function swapTempUnits() {
+            const temp = fromTempUnit.value;
+            fromTempUnit.value = toTempUnit.value;
+            toTempUnit.value = temp;
+            convertTemperature();
+        }
+        
+        // Swap weight units function
+        function swapWeightUnits() {
+            const temp = fromWeightUnit.value;
+            fromWeightUnit.value = toWeightUnit.value;
+            toWeightUnit.value = temp;
+            convertWeight();
+        }
+        
+        // Switch converter tabs
+        function switchConverterTab(tab) {
+            // Remove active class from all tabs
+            converterTabs.forEach(t => t.classList.remove('active'));
+            converterSections.forEach(s => s.classList.remove('active'));
+            
+            // Add active class to clicked tab
+            tab.classList.add('active');
+            
+            // Show corresponding section
+            const converterType = tab.dataset.converter;
+            document.getElementById(`${converterType}-converter`).classList.add('active');
+            
+            // Update recent converters
+            const recentText = document.querySelector('.converter-header span:last-child');
+            let recent = recentText.textContent.replace('Recent: ', '').split(', ');
+            
+            // Add to beginning if not already there
+            if (!recent.includes(tab.textContent)) {
+                recent.unshift(tab.textContent);
+                if (recent.length > 3) recent.pop();
+                recentText.innerHTML = `<i class="fas fa-history"></i> Recent: ${recent.join(', ')}`;
+            }
         }
         
         // Search functionality
@@ -1090,10 +1399,35 @@
                     card.style.display = 'none';
                 }
             });
+            
             // Scroll to converters section if search term exists
             if (searchTerm && found) {
                 document.querySelector('.converters-grid').scrollIntoView({ behavior: 'smooth' });
             }
+        }
+        
+        // Filter converters by category
+        function filterByCategory(category) {
+            const converterCards = document.querySelectorAll('.converter-card');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                if (link.dataset.category === category) {
+                    link.classList.add('active', 'nav-active');
+                } else {
+                    link.classList.remove('active', 'nav-active');
+                }
+            });
+            
+            // Show/hide converter cards
+            converterCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
         }
         
         // Event listeners
@@ -1101,18 +1435,87 @@
         fromUnit.addEventListener('change', convertUnits);
         toUnit.addEventListener('change', convertUnits);
         swapBtn.addEventListener('click', swapUnits);
+        
+        currencyAmount.addEventListener('input', convertCurrency);
+        fromCurrency.addEventListener('change', convertCurrency);
+        toCurrency.addEventListener('change', convertCurrency);
+        currencySwapBtn.addEventListener('click', swapCurrencies);
+        
+        tempInput.addEventListener('input', convertTemperature);
+        fromTempUnit.addEventListener('change', convertTemperature);
+        toTempUnit.addEventListener('change', convertTemperature);
+        tempSwapBtn.addEventListener('click', swapTempUnits);
+        
+        weightInput.addEventListener('input', convertWeight);
+        fromWeightUnit.addEventListener('change', convertWeight);
+        toWeightUnit.addEventListener('change', convertWeight);
+        weightSwapBtn.addEventListener('click', swapWeightUnits);
+        
+        converterTabs.forEach(tab => {
+            tab.addEventListener('click', () => switchConverterTab(tab));
+        });
+        
         searchInput.addEventListener('input', searchConverters);
         
-        // Initialize converter
-        convertUnits();
         // Add category click functionality
         document.querySelectorAll('.category-card').forEach(card => {
             card.addEventListener('click', function() {
-                const category = this.querySelector('h3').textContent;
-                searchInput.value = category;
-                searchConverters();
+                const category = this.dataset.category;
+                // Find corresponding tab and activate it
+                const tab = Array.from(converterTabs).find(t => t.dataset.converter === category);
+                if (tab) {
+                    switchConverterTab(tab);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    // If no tab, filter by category
+                    filterByCategory(category);
+                }
             });
         });
+        
+        // Add nav links click functionality
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const category = this.dataset.category;
+                filterByCategory(category);
+            });
+        });
+        
+        // Add quick links click functionality
+        document.querySelectorAll('.link-group a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const converter = this.dataset.converter;
+                const tab = Array.from(converterTabs).find(t => t.dataset.converter === converter);
+                if (tab) {
+                    switchConverterTab(tab);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Add converter card links functionality
+        document.querySelectorAll('.converter-card a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const converter = this.dataset.converter;
+                const tab = Array.from(converterTabs).find(t => t.dataset.converter === converter);
+                if (tab) {
+                    switchConverterTab(tab);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Initialize converters
+        convertUnits();
+        convertCurrency();
+        convertTemperature();
+        convertWeight();
+        
+        // Initialize category filtering
+        filterByCategory('all');
     </script>
 </body>
 </html>
