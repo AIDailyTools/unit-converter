@@ -865,13 +865,13 @@
     <nav class="main-nav">
         <ul class="nav-links">
             <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">All Converters</a></li>
-            <li><a href="#">Common Converters</a></li>
-            <li><a href="#">Engineering</a></li>
-            <li><a href="#">Heat</a></li>
-            <li><a href="#">Fluids</a></li>
-            <li><a href="#">Light</a></li>
-            <li><a href="#">Electricity</a></li>
+            <li><a href="#all-converters">All Converters</a></li>
+            <li><a href="#common-converters">Common Converters</a></li>
+            <li><a href="#engineering">Engineering</a></li>
+            <li><a href="#heat">Heat</a></li>
+            <li><a href="#fluids">Fluids</a></li>
+            <li><a href="#light">Light</a></li>
+            <li><a href="#electricity">Electricity</a></li>
         </ul>
     </nav>
 
@@ -1055,9 +1055,9 @@
             </div>
         </section>
 
-        <h2 class="section-title">All Converters</h2>
+        <h2 class="section-title" id="all-converters">All Converters</h2>
         <div class="converters-grid">
-            <div class="converter-card">
+            <div class="converter-card" id="common-converters">
                 <h3><i class="fas fa-tools"></i> Common Converters</h3>
                 <ul>
                     <li><a class="converter-link" data-category="length"><i class="fas fa-arrow-right"></i> Length Converter</a></li>
@@ -1068,7 +1068,7 @@
                     <li><a class="converter-link" data-category="time"><i class="fas fa-arrow-right"></i> Time Converter</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" id="engineering">
                 <h3><i class="fas fa-cogs"></i> Engineering</h3>
                 <ul>
                     <li><a class="converter-link" data-category="torque"><i class="fas fa-arrow-right"></i> Torque Converter</a></li>
@@ -1078,7 +1078,7 @@
                     <li><a class="converter-link" data-category="force"><i class="fas fa-arrow-right"></i> Force Converter</a></li>
                 </ul>
             </div>
-            <div class="converter-card">
+            <div class="converter-card" id="heat">
                 <h3><i class="fas fa-fire"></i> Heat Converters</h3>
                 <ul>
                     <li><a class="converter-link" data-category="heat-flux"><i class="fas fa-arrow-right"></i> Heat Flux Density</a></li>
@@ -1086,6 +1086,36 @@
                     <li><a class="converter-link" data-category="specific-heat"><i class="fas fa-arrow-right"></i> Specific Heat Capacity</a></li>
                     <li><a class="converter-link" data-category="conductivity"><i class="fas fa-arrow-right"></i> Thermal Conductivity</a></li>
                     <li><a class="converter-link" data-category="expansion"><i class="fas fa-arrow-right"></i> Thermal Expansion</a></li>
+                </ul>
+            </div>
+            <div class="converter-card" id="fluids">
+                <h3><i class="fas fa-tint"></i> Fluids Converters</h3>
+                <ul>
+                    <li><a class="converter-link" data-category="flow"><i class="fas fa-arrow-right"></i> Flow Rate Converter</a></li>
+                    <li><a class="converter-link" data-category="viscosity"><i class="fas fa-arrow-right"></i> Viscosity Converter</a></li>
+                    <li><a class="converter-link" data-category="density"><i class="fas fa-arrow-right"></i> Density Converter</a></li>
+                    <li><a class="converter-link" data-category="pressure"><i class="fas fa-arrow-right"></i> Pressure Converter</a></li>
+                    <li><a class="converter-link" data-category="volume"><i class="fas fa-arrow-right"></i> Volume Converter</a></li>
+                </ul>
+            </div>
+            <div class="converter-card" id="light">
+                <h3><i class="fas fa-lightbulb"></i> Light Converters</h3>
+                <ul>
+                    <li><a class="converter-link" data-category="illuminance"><i class="fas fa-arrow-right"></i> Illuminance Converter</a></li>
+                    <li><a class="converter-link" data-category="luminance"><i class="fas fa-arrow-right"></i> Luminance Converter</a></li>
+                    <li><a class="converter-link" data-category="luminous-flux"><i class="fas fa-arrow-right"></i> Luminous Flux Converter</a></li>
+                    <li><a class="converter-link" data-category="luminous-intensity"><i class="fas fa-arrow-right"></i> Luminous Intensity</a></li>
+                    <li><a class="converter-link" data-category="wavelength"><i class="fas fa-arrow-right"></i> Wavelength Converter</a></li>
+                </ul>
+            </div>
+            <div class="converter-card" id="electricity">
+                <h3><i class="fas fa-bolt"></i> Electricity Converters</h3>
+                <ul>
+                    <li><a class="converter-link" data-category="voltage"><i class="fas fa-arrow-right"></i> Voltage Converter</a></li>
+                    <li><a class="converter-link" data-category="current"><i class="fas fa-arrow-right"></i> Current Converter</a></li>
+                    <li><a class="converter-link" data-category="resistance"><i class="fas fa-arrow-right"></i> Resistance Converter</a></li>
+                    <li><a class="converter-link" data-category="power"><i class="fas fa-arrow-right"></i> Power Converter</a></li>
+                    <li><a class="converter-link" data-category="capacitance"><i class="fas fa-arrow-right"></i> Capacitance Converter</a></li>
                 </ul>
             </div>
         </div>
@@ -1109,8 +1139,8 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-list"></i> All Converters</a></li>
-                    <li><a href="#"><i class="fas fa-star"></i> Popular Converters</a></li>
+                    <li><a href="#all-converters"><i class="fas fa-list"></i> All Converters</a></li>
+                    <li><a href="#common-converters"><i class="fas fa-star"></i> Popular Converters</a></li>
                     <li><a href="#"><i class="fas fa-history"></i> Conversion History</a></li>
                     <li><a href="#"><i class="fas fa-book"></i> Unit Systems</a></li>
                 </ul>
@@ -1130,9 +1160,9 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <ul class="contact-info">
-                    <li><i class="fas fa-envelope"></i> angshuman.ds2020@gmail.com</li>
-                    <li><i class="fas fa-phone"></i> +91 9038394841</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Ichapur, West Bengal, India </li>
+                    <li><i class="fas fa-envelope"></i> contact@convertwizard.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Conversion Street, Unit City</li>
                 </ul>
             </div>
         </div>
@@ -1302,6 +1332,84 @@
                     GB: { b: 8589934592, B: 1073741824, KB: 1048576, MB: 1024, GB: 1, TB: 0.0009765625 },
                     TB: { b: 8796093022208, B: 1099511627776, KB: 1073741824, MB: 1048576, GB: 1024, TB: 1 }
                 }
+            },
+            torque: {
+                units: [
+                    { id: 'Nm', name: 'Newton meter (Nm)' },
+                    { id: 'kgf-m', name: 'Kilogram-force meter (kgf·m)' },
+                    { id: 'lbf-ft', name: 'Pound-force foot (lbf·ft)' },
+                    { id: 'lbf-in', name: 'Pound-force inch (lbf·in)' }
+                ],
+                factors: {
+                    'Nm': { 'Nm': 1, 'kgf-m': 0.1019716213, 'lbf-ft': 0.7375621493, 'lbf-in': 8.8507457916 },
+                    'kgf-m': { 'Nm': 9.80665, 'kgf-m': 1, 'lbf-ft': 7.2330138512, 'lbf-in': 86.7961662145 },
+                    'lbf-ft': { 'Nm': 1.3558179483, 'kgf-m': 0.1382549544, 'lbf-ft': 1, 'lbf-in': 12 },
+                    'lbf-in': { 'Nm': 0.112984829, 'kgf-m': 0.0115212462, 'lbf-ft': 0.0833333333, 'lbf-in': 1 }
+                }
+            },
+            pressure: {
+                units: [
+                    { id: 'Pa', name: 'Pascal (Pa)' },
+                    { id: 'kPa', name: 'Kilopascal (kPa)' },
+                    { id: 'MPa', name: 'Megapascal (MPa)' },
+                    { id: 'bar', name: 'Bar (bar)' },
+                    { id: 'psi', name: 'Pound per square inch (psi)' },
+                    { id: 'atm', name: 'Atmosphere (atm)' }
+                ],
+                factors: {
+                    Pa: { Pa: 1, kPa: 0.001, MPa: 0.000001, bar: 0.00001, psi: 0.0001450377, atm: 9.86923e-6 },
+                    kPa: { Pa: 1000, kPa: 1, MPa: 0.001, bar: 0.01, psi: 0.1450377, atm: 0.00986923 },
+                    MPa: { Pa: 1000000, kPa: 1000, MPa: 1, bar: 10, psi: 145.0377, atm: 9.86923 },
+                    bar: { Pa: 100000, kPa: 100, MPa: 0.1, bar: 1, psi: 14.50377, atm: 0.986923 },
+                    psi: { Pa: 6894.76, kPa: 6.89476, MPa: 0.00689476, bar: 0.0689476, psi: 1, atm: 0.068046 },
+                    atm: { Pa: 101325, kPa: 101.325, MPa: 0.101325, bar: 1.01325, psi: 14.6959, atm: 1 }
+                }
+            },
+            angle: {
+                units: [
+                    { id: 'deg', name: 'Degree (°)' },
+                    { id: 'rad', name: 'Radian (rad)' },
+                    { id: 'grad', name: 'Gradian (grad)' },
+                    { id: 'arcmin', name: 'Arcminute' },
+                    { id: 'arcsec', name: 'Arcsecond' }
+                ],
+                factors: {
+                    deg: { deg: 1, rad: Math.PI/180, grad: 10/9, arcmin: 60, arcsec: 3600 },
+                    rad: { deg: 180/Math.PI, rad: 1, grad: 200/Math.PI, arcmin: 180*60/Math.PI, arcsec: 180*3600/Math.PI },
+                    grad: { deg: 0.9, rad: Math.PI/200, grad: 1, arcmin: 54, arcsec: 3240 },
+                    arcmin: { deg: 1/60, rad: Math.PI/(180*60), grad: 1/54, arcmin: 1, arcsec: 60 },
+                    arcsec: { deg: 1/3600, rad: Math.PI/(180*3600), grad: 1/3240, arcmin: 1/60, arcsec: 1 }
+                }
+            },
+            energy: {
+                units: [
+                    { id: 'J', name: 'Joule (J)' },
+                    { id: 'kJ', name: 'Kilojoule (kJ)' },
+                    { id: 'cal', name: 'Calorie (cal)' },
+                    { id: 'kcal', name: 'Kilocalorie (kcal)' },
+                    { id: 'kWh', name: 'Kilowatt-hour (kWh)' }
+                ],
+                factors: {
+                    J: { J: 1, kJ: 0.001, cal: 0.239006, kcal: 0.000239006, kWh: 2.77778e-7 },
+                    kJ: { J: 1000, kJ: 1, cal: 239.006, kcal: 0.239006, kWh: 0.000277778 },
+                    cal: { J: 4.184, kJ: 0.004184, cal: 1, kcal: 0.001, kWh: 1.16279e-6 },
+                    kcal: { J: 4184, kJ: 4.184, cal: 1000, kcal: 1, kWh: 0.00116279 },
+                    kWh: { J: 3.6e6, kJ: 3600, cal: 860421, kcal: 860.421, kWh: 1 }
+                }
+            },
+            power: {
+                units: [
+                    { id: 'W', name: 'Watt (W)' },
+                    { id: 'kW', name: 'Kilowatt (kW)' },
+                    { id: 'MW', name: 'Megawatt (MW)' },
+                    { id: 'hp', name: 'Horsepower (hp)' }
+                ],
+                factors: {
+                    W: { W: 1, kW: 0.001, MW: 0.000001, hp: 0.00134102 },
+                    kW: { W: 1000, kW: 1, MW: 0.001, hp: 1.34102 },
+                    MW: { W: 1000000, kW: 1000, MW: 1, hp: 1341.02 },
+                    hp: { W: 745.7, kW: 0.7457, MW: 0.0007457, hp: 1 }
+                }
             }
         };
         
@@ -1385,6 +1493,11 @@
         
         // Change category function
         function changeCategory(category) {
+            if (!conversionData[category]) {
+                alert(`Category "${category}" is not implemented yet.`);
+                return;
+            }
+            
             currentCategory = category;
             
             // Update active tab
@@ -1509,6 +1622,19 @@
                     const category = link.dataset.category;
                     if (category) {
                         changeCategory(category);
+                    }
+                });
+            });
+            
+            // Navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
             });
