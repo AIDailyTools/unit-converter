@@ -594,6 +594,7 @@
             align-items: center;
             gap: 12px;
             font-size: 1.05rem;
+            cursor: pointer;
         }
 
         .link-group a:hover {
@@ -745,6 +746,25 @@
             text-decoration: underline;
         }
 
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background: var(--success);
+            color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            transform: translateX(120%);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .header-content {
@@ -819,6 +839,9 @@
     </style>
 </head>
 <body>
+    <!-- Notification -->
+    <div class="notification" id="notification">Result copied to clipboard!</div>
+    
     <header>
         <div class="header-content">
             <div class="logo">
@@ -892,6 +915,9 @@
                         <div class="category-tab" data-category="time">
                             <i class="fas fa-clock"></i> Time
                         </div>
+                        <div class="category-tab" data-category="data">
+                            <i class="fas fa-database"></i> Data
+                        </div>
                     </div>
                 </div>
                 
@@ -918,14 +944,14 @@
                     <div class="input-group">
                         <label>FROM UNIT</label>
                         <select id="fromUnit">
-                            <!-- Options will be populated by JavaScript -->
+                            <!-- Options populated by JS -->
                         </select>
                     </div>
                     
                     <div class="input-group">
                         <label>TO UNIT</label>
                         <select id="toUnit">
-                            <!-- Options will be populated by JavaScript -->
+                            <!-- Options populated by JS -->
                         </select>
                     </div>
                 </div>
@@ -999,31 +1025,31 @@
                 <div class="link-group">
                     <h3>Popular Converters</h3>
                     <ul>
-                        <li><a href="#" class="converter-link" data-category="length"><i class="fas fa-caret-right"></i> Length Converter</a></li>
-                        <li><a href="#" class="converter-link" data-category="weight"><i class="fas fa-caret-right"></i> Weight Converter</a></li>
-                        <li><a href="#" class="converter-link" data-category="temperature"><i class="fas fa-caret-right"></i> Temperature Converter</a></li>
-                        <li><a href="#" class="converter-link" data-category="area"><i class="fas fa-caret-right"></i> Area Converter</a></li>
-                        <li><a href="#" class="converter-link" data-category="volume"><i class="fas fa-caret-right"></i> Volume Converter</a></li>
+                        <li><a class="converter-link" data-category="length"><i class="fas fa-caret-right"></i> Length Converter</a></li>
+                        <li><a class="converter-link" data-category="weight"><i class="fas fa-caret-right"></i> Weight Converter</a></li>
+                        <li><a class="converter-link" data-category="temperature"><i class="fas fa-caret-right"></i> Temperature Converter</a></li>
+                        <li><a class="converter-link" data-category="area"><i class="fas fa-caret-right"></i> Area Converter</a></li>
+                        <li><a class="converter-link" data-category="volume"><i class="fas fa-caret-right"></i> Volume Converter</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Engineering Tools</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Torque Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Pressure Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Energy Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Power Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Force Converter</a></li>
+                        <li><a class="converter-link" data-category="torque"><i class="fas fa-caret-right"></i> Torque Converter</a></li>
+                        <li><a class="converter-link" data-category="pressure"><i class="fas fa-caret-right"></i> Pressure Converter</a></li>
+                        <li><a class="converter-link" data-category="energy"><i class="fas fa-caret-right"></i> Energy Converter</a></li>
+                        <li><a class="converter-link" data-category="power"><i class="fas fa-caret-right"></i> Power Converter</a></li>
+                        <li><a class="converter-link" data-category="force"><i class="fas fa-caret-right"></i> Force Converter</a></li>
                     </ul>
                 </div>
                 <div class="link-group">
                     <h3>Specialized Tools</h3>
                     <ul>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Cooking Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Data Storage</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Fuel Consumption</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Angle Converter</a></li>
-                        <li><a href="#"><i class="fas fa-caret-right"></i> Roman Numerals</a></li>
+                        <li><a class="converter-link" data-category="cooking"><i class="fas fa-caret-right"></i> Cooking Converter</a></li>
+                        <li><a class="converter-link" data-category="data"><i class="fas fa-caret-right"></i> Data Storage</a></li>
+                        <li><a class="converter-link" data-category="fuel"><i class="fas fa-caret-right"></i> Fuel Consumption</a></li>
+                        <li><a class="converter-link" data-category="angle"><i class="fas fa-caret-right"></i> Angle Converter</a></li>
+                        <li><a class="converter-link" data-category="roman"><i class="fas fa-caret-right"></i> Roman Numerals</a></li>
                     </ul>
                 </div>
             </div>
@@ -1034,32 +1060,32 @@
             <div class="converter-card">
                 <h3><i class="fas fa-tools"></i> Common Converters</h3>
                 <ul>
-                    <li><a href="#" class="converter-link" data-category="length"><i class="fas fa-arrow-right"></i> Length Converter</a></li>
-                    <li><a href="#" class="converter-link" data-category="weight"><i class="fas fa-arrow-right"></i> Weight Converter</a></li>
-                    <li><a href="#" class="converter-link" data-category="temperature"><i class="fas fa-arrow-right"></i> Temperature Converter</a></li>
-                    <li><a href="#" class="converter-link" data-category="area"><i class="fas fa-arrow-right"></i> Area Converter</a></li>
-                    <li><a href="#" class="converter-link" data-category="volume"><i class="fas fa-arrow-right"></i> Volume Converter</a></li>
-                    <li><a href="#" class="converter-link" data-category="time"><i class="fas fa-arrow-right"></i> Time Converter</a></li>
+                    <li><a class="converter-link" data-category="length"><i class="fas fa-arrow-right"></i> Length Converter</a></li>
+                    <li><a class="converter-link" data-category="weight"><i class="fas fa-arrow-right"></i> Weight Converter</a></li>
+                    <li><a class="converter-link" data-category="temperature"><i class="fas fa-arrow-right"></i> Temperature Converter</a></li>
+                    <li><a class="converter-link" data-category="area"><i class="fas fa-arrow-right"></i> Area Converter</a></li>
+                    <li><a class="converter-link" data-category="volume"><i class="fas fa-arrow-right"></i> Volume Converter</a></li>
+                    <li><a class="converter-link" data-category="time"><i class="fas fa-arrow-right"></i> Time Converter</a></li>
                 </ul>
             </div>
             <div class="converter-card">
                 <h3><i class="fas fa-cogs"></i> Engineering</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Acceleration Converter</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Density Converter</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Force Converter</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Torque Converter</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Viscosity Converter</a></li>
+                    <li><a class="converter-link" data-category="torque"><i class="fas fa-arrow-right"></i> Torque Converter</a></li>
+                    <li><a class="converter-link" data-category="pressure"><i class="fas fa-arrow-right"></i> Pressure Converter</a></li>
+                    <li><a class="converter-link" data-category="energy"><i class="fas fa-arrow-right"></i> Energy Converter</a></li>
+                    <li><a class="converter-link" data-category="power"><i class="fas fa-arrow-right"></i> Power Converter</a></li>
+                    <li><a class="converter-link" data-category="force"><i class="fas fa-arrow-right"></i> Force Converter</a></li>
                 </ul>
             </div>
             <div class="converter-card">
                 <h3><i class="fas fa-fire"></i> Heat Converters</h3>
                 <ul>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Heat Flux Density</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Heat Transfer</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Specific Heat Capacity</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Thermal Conductivity</a></li>
-                    <li><a href="#"><i class="fas fa-arrow-right"></i> Thermal Expansion</a></li>
+                    <li><a class="converter-link" data-category="heat-flux"><i class="fas fa-arrow-right"></i> Heat Flux Density</a></li>
+                    <li><a class="converter-link" data-category="heat-transfer"><i class="fas fa-arrow-right"></i> Heat Transfer</a></li>
+                    <li><a class="converter-link" data-category="specific-heat"><i class="fas fa-arrow-right"></i> Specific Heat Capacity</a></li>
+                    <li><a class="converter-link" data-category="conductivity"><i class="fas fa-arrow-right"></i> Thermal Conductivity</a></li>
+                    <li><a class="converter-link" data-category="expansion"><i class="fas fa-arrow-right"></i> Thermal Expansion</a></li>
                 </ul>
             </div>
         </div>
@@ -1138,6 +1164,7 @@
         const addFavoriteBtn = document.getElementById('addFavorite');
         const shareBtn = document.getElementById('shareBtn');
         const converterLinks = document.querySelectorAll('.converter-link');
+        const notification = document.getElementById('notification');
         
         // Current category and units
         let currentCategory = 'length';
@@ -1257,6 +1284,24 @@
                     month: { s: 2.6298e6, min: 43830, hr: 730.5, day: 30.4167, week: 4.34524, month: 1, year: 1/12 },
                     year: { s: 3.15576e7, min: 525960, hr: 8766, day: 365, week: 52.1429, month: 12, year: 1 }
                 }
+            },
+            data: {
+                units: [
+                    { id: 'b', name: 'Bit (b)' },
+                    { id: 'B', name: 'Byte (B)' },
+                    { id: 'KB', name: 'Kilobyte (KB)' },
+                    { id: 'MB', name: 'Megabyte (MB)' },
+                    { id: 'GB', name: 'Gigabyte (GB)' },
+                    { id: 'TB', name: 'Terabyte (TB)' }
+                ],
+                factors: {
+                    b: { b: 1, B: 0.125, KB: 0.0001220703125, MB: 1.1920928955078125e-7, GB: 1.1641532182693481e-10, TB: 1.1368683772161603e-13 },
+                    B: { b: 8, B: 1, KB: 0.0009765625, MB: 9.5367431640625e-7, GB: 9.313225746154785e-10, TB: 9.094947017729282e-13 },
+                    KB: { b: 8192, B: 1024, KB: 1, MB: 0.0009765625, GB: 9.5367431640625e-7, TB: 9.313225746154785e-10 },
+                    MB: { b: 8388608, B: 1048576, KB: 1024, MB: 1, GB: 0.0009765625, TB: 9.5367431640625e-7 },
+                    GB: { b: 8589934592, B: 1073741824, KB: 1048576, MB: 1024, GB: 1, TB: 0.0009765625 },
+                    TB: { b: 8796093022208, B: 1099511627776, KB: 1073741824, MB: 1048576, GB: 1024, TB: 1 }
+                }
             }
         };
         
@@ -1365,11 +1410,10 @@
         function copyResult() {
             const resultText = `${resultValue.textContent} ${resultUnit.textContent}`;
             navigator.clipboard.writeText(resultText).then(() => {
-                // Show feedback
-                const originalText = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                // Show notification
+                notification.classList.add('show');
                 setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
+                    notification.classList.remove('show');
                 }, 2000);
             });
         }
